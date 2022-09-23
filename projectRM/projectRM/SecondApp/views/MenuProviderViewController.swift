@@ -6,8 +6,8 @@
 //
 
 import UIKit
-/// SecondVC
-class SecondViewController: UIViewController {
+/// MenuProviderViewController
+class MenuProviderViewController: UIViewController {
 
     @IBOutlet var secondLabelName: UILabel!
     
@@ -28,9 +28,10 @@ class SecondViewController: UIViewController {
             self.secondLabelName.text = (needWord.changeWord(word: self.secondLabelName.text ?? "nil"))
             
         }
+        
         alertController.addTextField { _ in
         }
-        
+    
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
     }

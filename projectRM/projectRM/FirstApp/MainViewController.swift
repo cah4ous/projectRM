@@ -4,21 +4,25 @@
 //
 //  Created by Александр Троицкий on 21.09.2022.
 //
-import Darwin
 import UIKit
-/// firstVC
-class ViewController: UIViewController {
+/// MainViewController
+class MainViewController: UIViewController {
 
     @IBOutlet var nameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nameLabel.text = "Ваше ФИО"
+        addMainSettingsToOutlets()
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         alert(title: "Введите ваше ФИО.", message: "", style: .alert)
+    }
+    
+    func addMainSettingsToOutlets() {
+        self.nameLabel.text = "Ваше ФИО"
     }
     
     func alert(title: String, message: String, style: UIAlertController.Style) {

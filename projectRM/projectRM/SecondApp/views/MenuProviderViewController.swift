@@ -16,6 +16,7 @@ class MenuProviderViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         alert(title: "Второе приложение", message: "Введите leohl", style: .alert)
     }
     

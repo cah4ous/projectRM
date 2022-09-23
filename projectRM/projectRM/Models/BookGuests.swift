@@ -8,7 +8,8 @@
 import Foundation
 /// bookGuests
 struct BookGuest {
-    var arrBookGuest: [BookGuest] = []
+    
+    var bookGuest: [BookGuest] = []
     var name: String
     var countGuest: String
     var numberOfTable: String
@@ -31,7 +32,7 @@ struct BookGuest {
                            bookTable: Bool,
                            prepayment: Bool,
                            vipPlace: Bool) {
-        arrBookGuest.append(BookGuest(name: name,
+        bookGuest.append(BookGuest(name: name,
                                       countGuest: countGuest,
                                       numberOfTable: numberOfTable,
                                       bookTable: bookTable,
@@ -40,6 +41,6 @@ struct BookGuest {
     }
     
     func getInfoGuest() -> [BookGuest] {
-        return arrBookGuest
+        return bookGuest
     }
 }

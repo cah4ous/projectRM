@@ -6,15 +6,15 @@
 //
 
 import Foundation
-/// reg123
+/// RegistrationModel
 struct Register {
-    var arr = ["admin": "admin"]
+    var loginMap = ["admin": "admin"]
     
-    mutating func addToArray(name: String, pass: String) {
-        arr[name] = pass
+    mutating func addToMap(name: String, pass: String) {
+        loginMap[name] = pass
     }
     
-    func getFromArray() -> [String: String] {
-        return arr
+    func getFromMap() -> [String: String] {
+        return loginMap
     }
 }

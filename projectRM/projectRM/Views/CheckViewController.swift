@@ -6,19 +6,14 @@
 //
 
 import UIKit
-/// SecondVC
-class SecondViewController: UIViewController {
+/// CheckViewController
+class CheckViewController: UIViewController {
 
     @IBOutlet var nameLabel: UITextField!
-    
     @IBOutlet var countGuestLabel: UITextField!
-    
     @IBOutlet var numberOfTableLable: UITextField!
-    
     @IBOutlet var bookTable: UISwitch!
-    
     @IBOutlet var prepaymentSwitch: UISwitch!
-    
     @IBOutlet var vipPlaceSwitch: UISwitch!
     
     var bookGuests = BookGuest(name: "alex",

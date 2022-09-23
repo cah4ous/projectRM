@@ -6,8 +6,8 @@
 //
 
 import UIKit
-/// ThirdVC
-class ThirdViewController: UIViewController {
+/// InfoGuestsViewController
+class InfoGuestsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

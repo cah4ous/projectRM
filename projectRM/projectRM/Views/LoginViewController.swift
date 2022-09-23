@@ -6,23 +6,21 @@
 //
 
 import UIKit
-/// firstVC
-class ViewController: UIViewController {
+/// LoginViewController
+class LoginViewController: UIViewController {
 
     @IBOutlet var loginLabel: UITextField!
-    
     @IBOutlet var passwordLabel: UITextField!
     
-    var statusButton = true
-    
+    var isStatus = true
     var register = Register()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func goToSecondVC(_ sender: Any) {
-        let arrayReg = register.getFromArray()
+    @IBAction func goToSecondAction(_ sender: Any) {
+        let arrayReg = register.getFromMap()
         if (loginLabel.text?.isEmpty == false) && (passwordLabel.text?.isEmpty == false) {
             let login = loginLabel.text ?? "nil"
             let passw = passwordLabel.text ?? "nil"
@@ -35,18 +33,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func eyeAction(_ sender: Any) {
-        if statusButton == true {
-            statusButton = false
+        if isStatus == true {
+            isStatus = false
             passwordLabel.isSecureTextEntry = true
         } else {
-            statusButton = true
+            isStatus = true
             passwordLabel.isSecureTextEntry = false
         }
     }
     
     @IBAction func registerAction(_ sender: Any) {
         if (loginLabel.text?.isEmpty == false) && (passwordLabel.text?.isEmpty == false) {
-            register.addToArray(name: loginLabel.text ?? "nil", pass: passwordLabel.text ?? "nil")
+            register.addToMap(name: loginLabel.text ?? "nil", pass: passwordLabel.text ?? "nil")
         }
     }
 }

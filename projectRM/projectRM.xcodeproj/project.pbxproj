@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD62E28DBA9D900632D00 /* AppDelegate.swift */; };
 		715BD63128DBA9D900632D00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD63028DBA9D900632D00 /* SceneDelegate.swift */; };
-		715BD63328DBA9D900632D00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD63228DBA9D900632D00 /* ViewController.swift */; };
+		715BD63328DBA9D900632D00 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD63228DBA9D900632D00 /* LoginViewController.swift */; };
 		715BD63628DBA9D900632D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63428DBA9D900632D00 /* Main.storyboard */; };
 		715BD63828DBA9DB00632D00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63728DBA9DB00632D00 /* Assets.xcassets */; };
 		715BD63B28DBA9DB00632D00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63928DBA9DB00632D00 /* LaunchScreen.storyboard */; };
+		7173657A28DF17AB001C00E6 /* AddPersonBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173657928DF17AB001C00E6 /* AddPersonBirthdayViewController.swift */; };
+		7194DA0228DE6CFA00D8D1C3 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194DA0128DE6CFA00D8D1C3 /* Register.swift */; };
+		71DE292F28DEF6C50017C63C /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE292E28DEF6C50017C63C /* BirthdayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		715BD62B28DBA9D900632D00 /* projectRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = projectRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		715BD62E28DBA9D900632D00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		715BD63028DBA9D900632D00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		715BD63228DBA9D900632D00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		715BD63228DBA9D900632D00 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		715BD63528DBA9D900632D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		715BD63728DBA9DB00632D00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		715BD63A28DBA9DB00632D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		715BD63C28DBA9DB00632D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7173657928DF17AB001C00E6 /* AddPersonBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonBirthdayViewController.swift; sourceTree = "<group>"; };
+		7194DA0128DE6CFA00D8D1C3 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		71DE292E28DEF6C50017C63C /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,34 @@
 		715BD62D28DBA9D900632D00 /* projectRM */ = {
 			isa = PBXGroup;
 			children = (
+				7194D9FF28DE6CD800D8D1C3 /* Views */,
+				7194DA0028DE6CE100D8D1C3 /* Models */,
 				715BD62E28DBA9D900632D00 /* AppDelegate.swift */,
 				715BD63028DBA9D900632D00 /* SceneDelegate.swift */,
-				715BD63228DBA9D900632D00 /* ViewController.swift */,
 				715BD63428DBA9D900632D00 /* Main.storyboard */,
 				715BD63728DBA9DB00632D00 /* Assets.xcassets */,
 				715BD63928DBA9DB00632D00 /* LaunchScreen.storyboard */,
 				715BD63C28DBA9DB00632D00 /* Info.plist */,
 			);
 			path = projectRM;
+			sourceTree = "<group>";
+		};
+		7194D9FF28DE6CD800D8D1C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				715BD63228DBA9D900632D00 /* LoginViewController.swift */,
+				71DE292E28DEF6C50017C63C /* BirthdayViewController.swift */,
+				7173657928DF17AB001C00E6 /* AddPersonBirthdayViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7194DA0028DE6CE100D8D1C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7194DA0128DE6CFA00D8D1C3 /* Register.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,8 +184,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				715BD63328DBA9D900632D00 /* ViewController.swift in Sources */,
+				7173657A28DF17AB001C00E6 /* AddPersonBirthdayViewController.swift in Sources */,
+				71DE292F28DEF6C50017C63C /* BirthdayViewController.swift in Sources */,
+				715BD63328DBA9D900632D00 /* LoginViewController.swift in Sources */,
 				715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */,
+				7194DA0228DE6CFA00D8D1C3 /* Register.swift in Sources */,
 				715BD63128DBA9D900632D00 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD62E28DBA9D900632D00 /* AppDelegate.swift */; };
 		715BD63128DBA9D900632D00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD63028DBA9D900632D00 /* SceneDelegate.swift */; };
-		715BD63328DBA9D900632D00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD63228DBA9D900632D00 /* ViewController.swift */; };
+		715BD63328DBA9D900632D00 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD63228DBA9D900632D00 /* PlayerViewController.swift */; };
 		715BD63628DBA9D900632D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63428DBA9D900632D00 /* Main.storyboard */; };
 		715BD63828DBA9DB00632D00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63728DBA9DB00632D00 /* Assets.xcassets */; };
 		715BD63B28DBA9DB00632D00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63928DBA9DB00632D00 /* LaunchScreen.storyboard */; };
+		7173657C28DFAAE5001C00E6 /* Трактор.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7173657B28DFAAE5001C00E6 /* Трактор.mp3 */; };
+		7173657E28DFBCAA001C00E6 /* Gucci Gang.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7173657D28DFBCAA001C00E6 /* Gucci Gang.mp3 */; };
+		7173658028DFC077001C00E6 /* StartAlbomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173657F28DFC077001C00E6 /* StartAlbomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		715BD62B28DBA9D900632D00 /* projectRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = projectRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		715BD62E28DBA9D900632D00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		715BD63028DBA9D900632D00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		715BD63228DBA9D900632D00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		715BD63228DBA9D900632D00 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		715BD63528DBA9D900632D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		715BD63728DBA9DB00632D00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		715BD63A28DBA9DB00632D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		715BD63C28DBA9DB00632D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7173657B28DFAAE5001C00E6 /* Трактор.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Трактор.mp3"; path = "../../../Трактор.mp3"; sourceTree = "<group>"; };
+		7173657D28DFBCAA001C00E6 /* Gucci Gang.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Gucci Gang.mp3"; path = "../../../Gucci Gang.mp3"; sourceTree = "<group>"; };
+		7173657F28DFC077001C00E6 /* StartAlbomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAlbomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +64,11 @@
 			children = (
 				715BD62E28DBA9D900632D00 /* AppDelegate.swift */,
 				715BD63028DBA9D900632D00 /* SceneDelegate.swift */,
-				715BD63228DBA9D900632D00 /* ViewController.swift */,
+				715BD63228DBA9D900632D00 /* PlayerViewController.swift */,
+				7173657F28DFC077001C00E6 /* StartAlbomViewController.swift */,
 				715BD63428DBA9D900632D00 /* Main.storyboard */,
+				7173657B28DFAAE5001C00E6 /* Трактор.mp3 */,
+				7173657D28DFBCAA001C00E6 /* Gucci Gang.mp3 */,
 				715BD63728DBA9DB00632D00 /* Assets.xcassets */,
 				715BD63928DBA9DB00632D00 /* LaunchScreen.storyboard */,
 				715BD63C28DBA9DB00632D00 /* Info.plist */,
@@ -126,8 +135,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7173657E28DFBCAA001C00E6 /* Gucci Gang.mp3 in Resources */,
 				715BD63B28DBA9DB00632D00 /* LaunchScreen.storyboard in Resources */,
 				715BD63828DBA9DB00632D00 /* Assets.xcassets in Resources */,
+				7173657C28DFAAE5001C00E6 /* Трактор.mp3 in Resources */,
 				715BD63628DBA9D900632D00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,7 +170,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				715BD63328DBA9D900632D00 /* ViewController.swift in Sources */,
+				715BD63328DBA9D900632D00 /* PlayerViewController.swift in Sources */,
+				7173658028DFC077001C00E6 /* StartAlbomViewController.swift in Sources */,
 				715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */,
 				715BD63128DBA9D900632D00 /* SceneDelegate.swift in Sources */,
 			);

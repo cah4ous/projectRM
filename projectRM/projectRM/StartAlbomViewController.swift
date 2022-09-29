@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// StartAlbomViewController
+/// Экран, который несет в себе список песен, доступных к прослушиванию в плеере
 class StartAlbomViewController: UIViewController {
 
     var number = 0
@@ -15,8 +15,8 @@ class StartAlbomViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         guard segue.identifier == "PlayerVC" else { return }
-         guard let destination = segue.destination as? PlayerViewController else { return }
+        guard segue.identifier == "PlayerVC",
+              let destination = segue.destination as? PlayerViewController else { return }
         destination.numberOfSong = number
      }
     

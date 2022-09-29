@@ -2,18 +2,19 @@
   "images" : [
     {
       "filename" : "maxresdefault.jpeg",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "universal"
     },
     {
       "filename" : "maxresdefault-1.jpeg",
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "unassigned" : true
     },
     {
       "filename" : "maxresdefault-2.jpeg",
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "unassigned" : true
     }
   ],
   "info" : {

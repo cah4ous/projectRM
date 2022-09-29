@@ -6,7 +6,7 @@
 //
 import AVFoundation
 import UIKit
-/// PlayerViewController
+/// Экран, который содержит в себе плеер, можно проигрывать песни, переключать
 class PlayerViewController: UIViewController {
     
     @IBOutlet var timeStartLabel: UILabel!
@@ -38,44 +38,30 @@ class PlayerViewController: UIViewController {
         
         createAudioPlayer(nameOfSong: arraySongs[numberOfSong])
         
-        playerSlider.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
+        playerSlider.addTarget(self, action: #selector(changeSliderAction), for: .valueChanged)
         
         timer = Timer.scheduledTimer(timeInterval: 1,
                                      target: self,
-                                     selector: #selector(updateTime),
+                                     selector: #selector(updateTimeAction),
                                      userInfo: nil,
                                      repeats: true)
         
     }
     
     @IBAction func volumeSliderAction(_ sender: Any) {
-        self.player.volume = volumeSlider.value
-    }
-    
-    @objc func updateTime() {
-        self.playerSlider.value = Float(player.currentTime)
-        
-        let time = player.currentTime
-        let minutes = Int(time / 60)
-        let seconds = Int(time.truncatingRemainder(dividingBy: 60))
-        timeStartLabel.text = NSString(format: "%02d:%02d", minutes, seconds) as String
-        
-        let endTime = player.currentTime - player.duration
-        let endMunutes = Int(endTime / 60)
-        let endSeconds = Int(-endTime.truncatingRemainder(dividingBy: 60))
-        endOfSongLabel.text = NSString(format: "%02d:%02d", endMunutes, endSeconds) as String
+        player.volume = volumeSlider.value
     }
     
     @IBAction func burgerAction(_ sender: Any) {
         switch numberOfSong {
         case 0:
             let items = [URL(string: "https://www.youtube.com/watch?v=LbOve_UZZ54")]
-            let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            present(ac, animated: true)
+            let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            present(activityViewController, animated: true)
         case 1:
             let items = [URL(string: "https://www.youtube.com/watch?v=4LfJnj66HVQ")]
-            let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            present(ac, animated: true)
+            let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            present(activityViewController, animated: true)
         default:
             break
         }
@@ -91,18 +77,17 @@ class PlayerViewController: UIViewController {
         }
     }
     
-    @objc func changeSlider() {
-        self.player.currentTime = TimeInterval(playerSlider.value)
-    }
-    
     @IBAction func backSongAction(_ sender: Any) {
-        if numberOfSong == 0 {
-            createAudioPlayer(nameOfSong: arraySongs[1])
+        guard numberOfSong == 0 else { return }
+        switch numberOfSong {
+        case 0:
             numberOfSong = 1
-        } else {
-            createAudioPlayer(nameOfSong: arraySongs[0])
+        case 1:
             numberOfSong = 0
+        default:
+            break
         }
+        createAudioPlayer(nameOfSong: arraySongs[numberOfSong])
     }
     
     @IBAction func nextSongAction(_ sender: Any) {
@@ -126,4 +111,23 @@ class PlayerViewController: UIViewController {
             print("error")
         }
     }
+    
+    @objc func changeSliderAction() {
+        player.currentTime = TimeInterval(playerSlider.value)
+    }
+    
+    @objc func updateTimeAction() {
+        playerSlider.value = Float(player.currentTime)
+        
+        let time = player.currentTime
+        let minutes = Int(time / 60)
+        let seconds = Int(time.truncatingRemainder(dividingBy: 60))
+        timeStartLabel.text = NSString(format: "%02d:%02d", minutes, seconds) as String
+        
+        let endTime = player.currentTime - player.duration
+        let endMunutes = Int(endTime / 60)
+        let endSeconds = Int(-endTime.truncatingRemainder(dividingBy: 60))
+        endOfSongLabel.text = NSString(format: "%02d:%02d", endMunutes, endSeconds) as String
+    }
+    
 }

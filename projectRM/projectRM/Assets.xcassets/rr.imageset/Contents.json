@@ -1,0 +1,24 @@
+{
+  "images" : [
+    {
+      "filename" : "ava.jpeg",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "ava-1.jpeg",
+      "idiom" : "universal",
+      "scale" : "2x",
+      "unassigned" : true
+    },
+    {
+      "filename" : "ava-2.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x",
+      "unassigned" : true
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

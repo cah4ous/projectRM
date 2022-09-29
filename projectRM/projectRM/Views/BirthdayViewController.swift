@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// BirthdayViewController
+/// Экран, который содержит в себе захардкоженный лейбл с днем рождения человека и содержит в себе переход на следующий экран через кнопку
 class BirthdayViewController: UIViewController {
     
     let nameLabel = UILabel()
@@ -30,7 +30,7 @@ class BirthdayViewController: UIViewController {
         dayOfBirthdayLabel.translatesAutoresizingMaskIntoConstraints = false
         dayOfBirthdayLabel.textColor = .lightGray
         dayOfBirthdayLabel.text = "10 марта, в среду исполнится 25 лет"
-        self.view.addSubview(dayOfBirthdayLabel)
+        view.addSubview(dayOfBirthdayLabel)
         
         dayOfBirthdayLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 45).isActive = true
         dayOfBirthdayLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -150).isActive = true
@@ -44,7 +44,7 @@ class BirthdayViewController: UIViewController {
         
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(profileImageView)
+        view.addSubview(profileImageView)
         
         profileImageView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 45).isActive = true
         profileImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -200).isActive = true
@@ -53,10 +53,10 @@ class BirthdayViewController: UIViewController {
     }
     
     func createNameLabel() {
-        self.nameLabel.text = "John"
-        self.nameLabel.font = .boldSystemFont(ofSize: 30)
+        nameLabel.text = "John"
+        nameLabel.font = .boldSystemFont(ofSize: 30)
         
-        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(nameLabel)
         
@@ -67,13 +67,13 @@ class BirthdayViewController: UIViewController {
     }
 
     func settingsView() {
-        self.navigationItem.title = "Birthday"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
+        navigationItem.title = "Birthday"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
                                                                  target: self,
-                                                                 action: #selector(actionAdd))
+                                                                 action: #selector(addAction))
     }
     
-    @objc func actionAdd() {
+    @objc func addAction() {
         let addPersonbirthdayViewController = AddPersonBirthdayViewController()
         navigationController?.pushViewController(addPersonbirthdayViewController, animated: true)
     }

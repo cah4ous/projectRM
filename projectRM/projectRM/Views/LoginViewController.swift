@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// LoginViewController
+/// Экран, который отвечает за вход и регистрацию пользователя
 class LoginViewController: UIViewController {
     
     let loginTextField = UITextField()
@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         initMethods()
     }
     
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
         
         birthdayRimenderLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(birthdayRimenderLabel)
+        view.addSubview(birthdayRimenderLabel)
         
         birthdayRimenderLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         birthdayRimenderLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
     func createFaceIdSwitch() {
         faceIdSwitch.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(faceIdSwitch)
+        view.addSubview(faceIdSwitch)
         
         faceIdSwitch.widthAnchor.constraint(equalToConstant: 100).isActive = true
         faceIdSwitch.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -72,7 +72,7 @@ class LoginViewController: UIViewController {
         
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(loginTextField)
+        view.addSubview(loginTextField)
         
         loginTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
         loginTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -86,9 +86,9 @@ class LoginViewController: UIViewController {
         
         singLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(singLabel)
+        view.addSubview(singLabel)
         
-        singLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 45).isActive = true
+        singLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 45).isActive = true
         singLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -200).isActive = true
         singLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         singLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -99,7 +99,7 @@ class LoginViewController: UIViewController {
  
         faceIdLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(faceIdLabel)
+        view.addSubview(faceIdLabel)
         
         faceIdLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
         faceIdLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -113,7 +113,7 @@ class LoginViewController: UIViewController {
         
         eyeButton.translatesAutoresizingMaskIntoConstraints = false
     
-        self.view.addSubview(eyeButton)
+        view.addSubview(eyeButton)
         
         eyeButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         eyeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -122,23 +122,13 @@ class LoginViewController: UIViewController {
         
         eyeButton.addTarget(self, action: #selector(togglePassword), for: .touchUpInside)
     }
-
-    @objc func togglePassword() {
-        let togglePassword = passwordTextField.isSecureTextEntry
-        passwordTextField.isSecureTextEntry = togglePassword ? false : true
-        if togglePassword {
-            eyeButton.setImage(UIImage(systemName: "eye"), for: .normal)
-        } else {
-            eyeButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-        }
-    }
-
+    
     func createPassTextField() {
         passwordTextField.placeholder = "Пароль..."
 
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(passwordTextField)
+        view.addSubview(passwordTextField)
         
         passwordTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -156,7 +146,7 @@ class LoginViewController: UIViewController {
         
         buttonLogin.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(buttonLogin)
+        view.addSubview(buttonLogin)
         
         buttonLogin.widthAnchor.constraint(equalToConstant: 300).isActive = true
         buttonLogin.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -182,7 +172,7 @@ class LoginViewController: UIViewController {
 
         buttonReg.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(buttonReg)
+        view.addSubview(buttonReg)
         
         buttonReg.widthAnchor.constraint(equalToConstant: 300).isActive = true
         buttonReg.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -196,6 +186,16 @@ class LoginViewController: UIViewController {
         if (loginTextField.text?.isEmpty == false) && (passwordTextField.text?.isEmpty == false) {
              register.addToMap(name: loginTextField.text ?? "nil", pass: passwordTextField.text ?? "nil")
          }
+    }
+    
+    @objc func togglePassword() {
+        let togglePassword = passwordTextField.isSecureTextEntry
+        passwordTextField.isSecureTextEntry = togglePassword ? false : true
+        if togglePassword {
+            eyeButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        } else {
+            eyeButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        }
     }
 
     @objc func goToBirthdayViewController() {

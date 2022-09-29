@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// AddPersonBirthdayViewController
+/// Экран, который отвечает за настройки профиля пользователя
 class AddPersonBirthdayViewController: UIViewController {
     
     let profileImageView = UIImageView()
@@ -23,7 +23,7 @@ class AddPersonBirthdayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         initMethods()
 
     }
@@ -45,7 +45,7 @@ class AddPersonBirthdayViewController: UIViewController {
         
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(profileImageView)
+        view.addSubview(profileImageView)
         
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -300).isActive = true
@@ -63,31 +63,14 @@ class AddPersonBirthdayViewController: UIViewController {
         
         socialMediaTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(socialMediaTextField)
+        view.addSubview(socialMediaTextField)
         
         socialMediaTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
         socialMediaTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         socialMediaTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         socialMediaTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 90).isActive = true
         
-        socialMediaTextField.addTarget(self, action: #selector(createSocialMediaAlert), for: .allEditingEvents)
-    }
-    
-    @objc func createSocialMediaAlert() {
-        let alertController = UIAlertController(title: "Введите никнейм...",
-                                                message: "",
-                                                preferredStyle: .alert)
-        alertController.addTextField()
-        
-        let actionAlert = UIAlertAction(title: "OK", style: .default) { _ in
-            guard let text = alertController.textFields?.first else { return }
-            text.placeholder = "Сыр"
-            self.socialMediaTextField.text = text.text
-        }
-        
-        alertController.addAction(actionAlert)
-        
-        present(alertController, animated: true)
+        socialMediaTextField.addTarget(self, action: #selector(createSocialMediaAlertAction), for: .allEditingEvents)
     }
     
     func createNameTextField() {
@@ -100,7 +83,7 @@ class AddPersonBirthdayViewController: UIViewController {
         
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(nameTextField)
+        view.addSubview(nameTextField)
         
         nameTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
         nameTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -118,7 +101,7 @@ class AddPersonBirthdayViewController: UIViewController {
         
         dateTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(dateTextField)
+        view.addSubview(dateTextField)
         
         dateTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
         dateTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -138,7 +121,7 @@ class AddPersonBirthdayViewController: UIViewController {
         
         ageTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(ageTextField)
+        view.addSubview(ageTextField)
         
         ageTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
         ageTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -156,7 +139,7 @@ class AddPersonBirthdayViewController: UIViewController {
         
         genderTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(genderTextField)
+        view.addSubview(genderTextField)
         
         genderTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
         genderTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -190,10 +173,6 @@ class AddPersonBirthdayViewController: UIViewController {
         
     }
     
-    @objc func donePickerAction() {
-        view.endEditing(true)
-    }
-    
     func createDatePicker() {
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.locale = .init(identifier: "Russian")
@@ -212,6 +191,28 @@ class AddPersonBirthdayViewController: UIViewController {
         
     }
     
+    @objc func createSocialMediaAlertAction() {
+        let alertController = UIAlertController(title: "Введите никнейм...",
+                                                message: "",
+                                                preferredStyle: .alert)
+        alertController.addTextField()
+        
+        let actionAlert = UIAlertAction(title: "OK", style: .default) { _ in
+            guard let text = alertController.textFields?.first else { return }
+            text.placeholder = "Сыр"
+            self.socialMediaTextField.text = text.text
+        }
+        
+        alertController.addAction(actionAlert)
+        
+        present(alertController, animated: true)
+    }
+    
+    @objc func donePickerAction() {
+        view.endEditing(true)
+    }
+    
+    
     @objc func doneDatePickerAction() {
         let format = DateFormatter()
         format.dateStyle = .long
@@ -219,11 +220,11 @@ class AddPersonBirthdayViewController: UIViewController {
         format.locale = .init(identifier: "Russian")
         
         dateTextField.text = format.string(from: datePicker.date)
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
 }
-
+/// Настройки пикейвью делегат и пикервью датасоурс
 extension AddPersonBirthdayViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -231,35 +232,44 @@ extension AddPersonBirthdayViewController: UIPickerViewDelegate, UIPickerViewDat
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.tag {
-        case 1: return 100
-        case 2: return gender.count
-        default: return 1
+        case 1:
+            return 100
+        case 2:
+            return gender.count
+        default:
+            return 1
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.tag {
-        case 1: return "\(row)"
-        case 2: return "\(gender[row])"
-        default: return ""
+        case 1:
+            return "\(row)"
+        case 2:
+            return "\(gender[row])"
+        default:
+            return ""
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
-        case 1: ageTextField.text = "\(row)"
-        case 2: genderTextField.text = "\(gender[row])"
-        default: break
+        case 1:
+            ageTextField.text = "\(row)"
+        case 2:
+            genderTextField.text = "\(gender[row])"
+        default:
+            break
         }
     }
     
     func settingsView() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
                                                                  target: self,
-                                                                 action: #selector(actionSave))
+                                                                 action: #selector(saveAction))
     }
     
-    @objc func actionSave() {
+    @objc func saveAction() {
         let birthdayViewController = BirthdayViewController()
         navigationController?.pushViewController(birthdayViewController, animated: true)
     }

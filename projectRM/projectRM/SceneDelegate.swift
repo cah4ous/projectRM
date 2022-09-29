@@ -15,5 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions) {
+            if let windowScene = scene as? UIWindowScene {
+                   let window = UIWindow(windowScene: windowScene)
+                   let navigationViewController = UINavigationController(rootViewController: LoginViewController())
+                   window.rootViewController = navigationViewController
+                   self.window = window
+                   window.makeKeyAndVisible()
+            }
     }
 }

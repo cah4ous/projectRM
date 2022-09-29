@@ -1,0 +1,24 @@
+{
+  "images" : [
+    {
+      "filename" : "maxresdefault.jpeg",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "maxresdefault-1.jpeg",
+      "idiom" : "universal",
+      "scale" : "2x",
+      "unassigned" : true
+    },
+    {
+      "filename" : "maxresdefault-2.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x",
+      "unassigned" : true
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

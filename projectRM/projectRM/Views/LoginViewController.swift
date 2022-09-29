@@ -56,17 +56,7 @@ class LoginViewController: UIViewController {
 
         view.addSubview(eyeButton)
 
-        eyeButton.addTarget(self, action: #selector(togglePassword), for: .touchUpInside)
-    }
-
-    @objc func togglePassword() {
-        let togglePassword = passwordTextField.isSecureTextEntry
-        passwordTextField.isSecureTextEntry = togglePassword ? false : true
-        if togglePassword {
-            eyeButton.setImage(UIImage(systemName: "eye"), for: .normal)
-        } else {
-            eyeButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-        }
+        eyeButton.addTarget(self, action: #selector(togglePasswordAction), for: .touchUpInside)
     }
 
     func createPassTextField() {
@@ -90,6 +80,16 @@ class LoginViewController: UIViewController {
 
         view.addSubview(buttonLogin)
 
+    }
+    
+    @objc func togglePasswordAction() {
+        let togglePassword = passwordTextField.isSecureTextEntry
+        passwordTextField.isSecureTextEntry = togglePassword ? false : true
+        if togglePassword {
+            eyeButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        } else {
+            eyeButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        }
     }
 
     @objc func goToBirthdayViewControllerAction() {

@@ -25,9 +25,9 @@ class EquipmentViewController: UIViewController {
     
     var colorOfProduct = ["Белый", "Черный", "Зеленый", "Cиний"]
     var memorySizeProduct = ["128", "256", "512", "1024"]
-    var phoneArray = ["iPhone 14", "iPhone 12", "iPhone 13"]
+    var phones = ["iPhone 14", "iPhone 12", "iPhone 13"]
     var mapPrice = [0: "100000", 1: "40000", 2: "60000"]
-    var imageArray = [UIImage(named: "iphoneOne.jpeg"),
+    var images = [UIImage(named: "iphoneOne.jpeg"),
                       UIImage(named: "iphoneTwo.jpeg"),
                       UIImage(named: "iphoneThree.jpeg")
     ]
@@ -52,7 +52,7 @@ class EquipmentViewController: UIViewController {
     }
     
     func createPhoneLabel() {
-        phoneNameLabel.text = phoneArray[numberOfProduct]
+        phoneNameLabel.text = phones[numberOfProduct]
         phoneNameLabel.font = .boldSystemFont(ofSize: 30)
         phoneNameLabel.frame = CGRect(x: 125, y: 50, width: 200, height: 50)
         
@@ -61,7 +61,7 @@ class EquipmentViewController: UIViewController {
     
     func createImageView() {
         imageView.frame = CGRect(x: 100, y: 400, width: 200, height: 290)
-        imageView.image = imageArray[numberOfProduct]
+        imageView.image = images[numberOfProduct]
         view.addSubview(imageView)
     }
     

@@ -11,11 +11,11 @@ class ProductViewController: UIViewController {
 
     var nameOfProductLabel = UILabel()
     var segmentControl = UISegmentedControl()
-    var menuArray = ["iPhone 14", "iPhone 12", "iPhone 13"]
+    var phones = ["iPhone 14", "iPhone 12", "iPhone 13"]
     var imageView = UIImageView()
     var selectButton = UIButton()
     
-    var imageArray = [UIImage(named: "iphoneOne.jpeg"),
+    var images = [UIImage(named: "iphoneOne.jpeg"),
                       UIImage(named: "iphoneTwo.jpeg"),
                       UIImage(named: "iphoneThree.jpeg")
     ]
@@ -35,7 +35,7 @@ class ProductViewController: UIViewController {
     }
     
     func createNameOfProduct() {
-        nameOfProductLabel.text = menuArray[0]
+        nameOfProductLabel.text = phones[0]
         nameOfProductLabel.font = .boldSystemFont(ofSize: 30)
         nameOfProductLabel.frame = CGRect(x: 130, y: 150, width: 200, height: 80)
         
@@ -54,25 +54,25 @@ class ProductViewController: UIViewController {
     func createImageView() {
         imageView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
         imageView.center = self.view.center
-        imageView.image = imageArray[0]
+        imageView.image = images[0]
         view.addSubview(imageView)
     }
     
     func createSegmentControl() {
         segmentControl.selectedSegmentIndex = 0
-        segmentControl = UISegmentedControl(items: menuArray)
+        segmentControl = UISegmentedControl(items: phones)
         segmentControl.frame = CGRect(x: 50, y: 600, width: 300, height: 30)
         view.addSubview(segmentControl)
         
-        segmentControl.addTarget(self, action: #selector(selectedValue), for: .valueChanged)
+        segmentControl.addTarget(self, action: #selector(selectedValueAction), for: .valueChanged)
     }
     
-    @objc func selectedValue(target: UISegmentedControl) {
+    @objc func selectedValueAction(target: UISegmentedControl) {
         if target == segmentControl {
             let segmentIndex = target.selectedSegmentIndex
             
-            imageView.image = imageArray[segmentIndex]
-            nameOfProductLabel.text = menuArray[segmentIndex]
+            imageView.image = images[segmentIndex]
+            nameOfProductLabel.text = phones[segmentIndex]
             _ = target.titleForSegment(at: segmentIndex)
             
         }

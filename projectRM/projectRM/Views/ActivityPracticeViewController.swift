@@ -13,7 +13,7 @@ class ActivityPracticeViewController: UIViewController {
     @IBOutlet var textFieldOutlet: UITextField!
     
     var testPickerView = UIPickerView()
-    var testPickerArray = ["1", "2", "3"]
+    var numbers = ["1", "2", "3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class ActivityPracticeViewController: UIViewController {
     func initMethods() {
         textFieldOutlet.addTarget(self, action: #selector(textFieldAction), for: .editingDidBegin)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                          action: #selector(imageTapped(tapGestureRecognizer:))
+                                                          action: #selector(imageTappedAction(tapGestureRecognizer:))
         )
         testImageView.isUserInteractionEnabled = true
         testImageView.addGestureRecognizer(tapGestureRecognizer)
@@ -47,7 +47,7 @@ class ActivityPracticeViewController: UIViewController {
          view.endEditing(true)
      }
     
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc func imageTappedAction(tapGestureRecognizer: UITapGestureRecognizer) {
         let items = [URL(string: "https://www.youtube.com/watch?v=4LfJnj66HVQ")]
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(activityViewController, animated: true)
@@ -59,13 +59,14 @@ class ActivityPracticeViewController: UIViewController {
         present(activityViewController, animated: true)
     }
     
-    @IBAction func firstPracticeButtonTest(_ sender: Any) {
+    @IBAction func firstPracticeButtonTestAction(_ sender: Any) {
         let items = [URL(string: "https://www.youtube.com/watch?v=4LfJnj66HVQ")]
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(activityViewController, animated: true)
     }
 }
 
+/// UIPickerViewDelegate, UIPickerViewDataSource
 extension ActivityPracticeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
       func numberOfComponents(in pickerView: UIPickerView) -> Int {
           return 1
@@ -76,16 +77,14 @@ extension ActivityPracticeViewController: UIPickerViewDelegate, UIPickerViewData
       }
 
       func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-          return testPickerArray[row]
+          return numbers[row]
       }
 
       func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-          if row == 2 {
-              let items = [URL(string: "https://www.youtube.com/watch?v=4LfJnj66HVQ")]
-              let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-              present(activityViewController, animated: true)
-          } else {
-              textFieldOutlet.text = "\(row + 1)"
-          }
+          guard row == 2 else { return textFieldOutlet.text = "\(row + 1)" }
+          let items = [URL(string: "https://www.youtube.com/watch?v=4LfJnj66HVQ")]
+          let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+          present(activityViewController, animated: true)
+              
       }
   }

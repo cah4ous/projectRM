@@ -2,18 +2,19 @@
   "images" : [
     {
       "filename" : "ava.jpeg",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "universal"
     },
     {
       "filename" : "ava-1.jpeg",
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "unassigned" : true
     },
     {
       "filename" : "ava-2.jpeg",
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "unassigned" : true
     }
   ],
   "info" : {

@@ -12,10 +12,15 @@ class InfoPizzaViewController: UIViewController {
     var namePizzaLabel = UILabel()
     var caloriesLabel = UILabel()
     var pizzaImageView = UIImageView()
+    var descriptionPizzaLabel = UILabel()
 
     var numberOfPizza = 0
     var pizzas = ["Маргарита", "Пеперони"]
-    var calories = ["334", "654"]
+    var caloriesPizza = ["649", "789"]
+    var weightPizza = ["330", "331"]
+    var desctiptionPizza = ["Томатный соус, моцарелла, помидоры, орегано",
+                            "Томатный соус, моцарелла, пеперони"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +32,22 @@ class InfoPizzaViewController: UIViewController {
         createNamePizzaLabel()
         createPizzaImageView()
         createPizzaCaloriesLabel()
+        createDescriptionPizzaLabel()
+    }
+    
+    func createDescriptionPizzaLabel() {
+        descriptionPizzaLabel.frame = CGRect(x: 50, y: 600, width: 300, height: 50)
+        descriptionPizzaLabel.numberOfLines = 0
+        descriptionPizzaLabel.text = "\(desctiptionPizza[numberOfPizza])"
+        descriptionPizzaLabel.font = .boldSystemFont(ofSize: 15)
+        descriptionPizzaLabel.textAlignment = .center
+        
+        view.addSubview(descriptionPizzaLabel)
     }
     
     func createPizzaCaloriesLabel() {
-        caloriesLabel.frame = CGRect(x: 50, y: 650, width: 300, height: 50)
-        caloriesLabel.text = "\(calories[numberOfPizza]) калорий"
+        caloriesLabel.frame = CGRect(x: 50, y: 500, width: 300, height: 100)
+        caloriesLabel.text = "\(caloriesPizza[numberOfPizza]) кк, \(weightPizza[numberOfPizza]) г"
         caloriesLabel.font = .boldSystemFont(ofSize: 25)
         caloriesLabel.textAlignment = .center
         

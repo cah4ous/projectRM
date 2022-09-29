@@ -16,8 +16,11 @@ import UIKit
      let passwordLabel = UILabel()
      let eyeButton = UIButton()
      let singLabel = UILabel()
+     let fastSingInButton = UIButton()
      var passEye = UIImageView()
 
+     var registration = Registration()
+     
      override func viewDidLoad() {
          super.viewDidLoad()
          self.view.backgroundColor = .white
@@ -25,7 +28,7 @@ import UIKit
      }
 
      func initMethods() {
-         createButtonLogin()
+         createLoginButton()
          createPhoneTextField()
          createPassTextField()
          createEyeButton()
@@ -33,6 +36,8 @@ import UIKit
          createCloudImage()
          createNumberLabel()
          createPasswordLabel()
+         createRegistrationButton()
+         createFastSignInButton()
      }
      
      func createNumberLabel() {
@@ -71,10 +76,10 @@ import UIKit
      }
 
      func createSignInLabel() {
-         singLabel.text = "Pizza Swift"
+         singLabel.text = "Bringo"
          singLabel.font = .boldSystemFont(ofSize: 30)
 
-         singLabel.frame = CGRect(x: 120, y: 220, width: 150, height: 50)
+         singLabel.frame = CGRect(x: 155, y: 220, width: 150, height: 50)
 
          view.addSubview(singLabel)
 
@@ -99,19 +104,58 @@ import UIKit
 
          view.addSubview(passwordTextField)
      }
+     
+     func createLoginButton() {
+         let loginButton = UIButton(type: .system)
+         
+         loginButton.tintColor = .white
+         loginButton.layer.cornerRadius = 10
+         loginButton.backgroundColor = .orange
+         loginButton.setTitle("Войти", for: .normal)
+         loginButton.addTarget(self, action: #selector(goToFoodViewControllerAction), for: .touchUpInside)
 
-     func createButtonLogin() {
-         let buttonLogin = UIButton()
+         loginButton.frame = CGRect(x: 50, y: 480, width: 300, height: 65)
 
-         buttonLogin.layer.cornerRadius = 5
-         buttonLogin.backgroundColor = .orange
-         buttonLogin.setTitle("Войти", for: .normal)
-         buttonLogin.addTarget(self, action: #selector(goToFoodViewControllerAction), for: .touchUpInside)
+         view.addSubview(loginButton)
+     }
 
-         buttonLogin.frame = CGRect(x: 50, y: 480, width: 300, height: 75)
+     func createRegistrationButton() {
+         let registationButton = UIButton(type: .system)
+         
+         registationButton.tintColor = .white
+         registationButton.layer.cornerRadius = 10
+         registationButton.backgroundColor = .orange
+         registationButton.setTitle("Зарегистрироваться", for: .normal)
+         registationButton.addTarget(self, action: #selector(registrationAction), for: .touchUpInside)
 
-         view.addSubview(buttonLogin)
+         registationButton.frame = CGRect(x: 50, y: 580, width: 300, height: 65)
 
+         view.addSubview(registationButton)
+     }
+     
+     func createFastSignInButton() {
+         let fastSignInButton = UIButton(type: .system)
+         
+         fastSignInButton.tintColor = .white
+         fastSignInButton.layer.cornerRadius = 10
+         fastSignInButton.backgroundColor = .gray
+         fastSignInButton.setTitle("Быстрый вход", for: .normal)
+         fastSignInButton.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
+
+         fastSignInButton.frame = CGRect(x: 120, y: 760, width: 150, height: 40)
+
+         view.addSubview(fastSignInButton)
+     }
+     
+     @objc func signInButtonAction() {
+         let foodViewController = FoodViewController()
+         navigationController?.pushViewController(foodViewController, animated: true)
+     }
+     
+     @objc func registrationAction() {
+         if (phoneTextField.text?.isEmpty == false) && (passwordTextField.text?.isEmpty == false) {
+             registration.addToMap(name: phoneTextField.text ?? "nil", pass: passwordTextField.text ?? "nil")
+         }
      }
      
      @objc func togglePasswordAction() {
@@ -126,8 +170,15 @@ import UIKit
 
      @objc func goToFoodViewControllerAction() {
           if (phoneTextField.text?.isEmpty == false) && (passwordTextField.text?.isEmpty == false) {
-              let foodViewController = FoodViewController()
-              navigationController?.pushViewController(foodViewController, animated: true)
+              let loginAndPassInfo = registration.getFromMap()
+              let login = phoneTextField.text ?? "nil"
+              let pass = passwordTextField.text ?? "nil"
+              if loginAndPassInfo.keys.contains(login) {
+                  if loginAndPassInfo[login] == pass {
+                      let foodViewController = FoodViewController()
+                      navigationController?.pushViewController(foodViewController, animated: true)
+                  }
+              }
           }
      }
  }

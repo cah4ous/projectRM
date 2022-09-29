@@ -15,6 +15,7 @@ class PizzaViewController: UIViewController {
     var peperoniLabel = UILabel()
     var margaritaButton = UIButton()
     var peperoniButton = UIButton()
+    var blackLineImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,14 @@ class PizzaViewController: UIViewController {
         createPeperoniLabel()
         createMargaritaButton()
         createPeperoniButton()
+        createBlackLineImageView()
+    }
+    
+    func createBlackLineImageView() {
+        blackLineImageView.image = UIImage(named: "grayLine.png")
+        blackLineImageView.frame = CGRect(x: 35, y: 220, width: 320, height: 25)
+        
+        view.addSubview(blackLineImageView)
     }
     
     func createMargaritaButton() {

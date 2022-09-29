@@ -18,6 +18,7 @@
 		715BD63B28DBA9DB00632D00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63928DBA9DB00632D00 /* LaunchScreen.storyboard */; };
 		7169BC9528E435E30071C70D /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169BC9428E435E30071C70D /* FoodViewController.swift */; };
 		71806F4928E4F26000CDE2E3 /* PizzaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71806F4828E4F26000CDE2E3 /* PizzaViewController.swift */; };
+		71FD7E6E28E6241800B63536 /* Registaration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FD7E6D28E6241800B63536 /* Registaration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		715BD63C28DBA9DB00632D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7169BC9428E435E30071C70D /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		71806F4828E4F26000CDE2E3 /* PizzaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaViewController.swift; sourceTree = "<group>"; };
+		71FD7E6D28E6241800B63536 /* Registaration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registaration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		715BD62D28DBA9D900632D00 /* projectRM */ = {
 			isa = PBXGroup;
 			children = (
+				71FD7E6C28E6240500B63536 /* Models */,
 				7169BC9328E4352A0071C70D /* Views */,
 				715BD62E28DBA9D900632D00 /* AppDelegate.swift */,
 				715BD63028DBA9D900632D00 /* SceneDelegate.swift */,
@@ -88,6 +91,14 @@
 				7123278628E50608005CFDC8 /* CheckViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		71FD7E6C28E6240500B63536 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				71FD7E6D28E6241800B63536 /* Registaration.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				715BD63328DBA9D900632D00 /* LoginViewController.swift in Sources */,
 				715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */,
 				7169BC9528E435E30071C70D /* FoodViewController.swift in Sources */,
+				71FD7E6E28E6241800B63536 /* Registaration.swift in Sources */,
 				7123278928E50665005CFDC8 /* IngridientsPizzaViewController.swift in Sources */,
 				715BD63128DBA9D900632D00 /* SceneDelegate.swift in Sources */,
 			);

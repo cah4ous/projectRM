@@ -20,9 +20,10 @@ class IngridientsPizzaViewController: UIViewController {
     var olivesLabel = UILabel()
     var olivesSwitch = UISwitch()
     var selectButton = UIButton()
+    var infoPizzaButton = UIButton()
     
     var numberOfPizza = 0
-    var pizzaArray = ["Маргарита", "Пеперони"]
+    var pizzas = ["Маргарита", "Пеперони"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +44,20 @@ class IngridientsPizzaViewController: UIViewController {
         createOlivesLabel()
         createPizzaLabel()
         createSelectButton()
+        createInfoPizzaButton()
         settingsView()
         
+    }
+    
+    func createInfoPizzaButton() {
+        infoPizzaButton.setImage(UIImage(systemName: "info.circle"), for: .normal)
+        infoPizzaButton.tintColor = .white
+        infoPizzaButton.backgroundColor = .orange
+        infoPizzaButton.layer.cornerRadius = 10
+        infoPizzaButton.frame = CGRect(x: 330, y: 90, width: 40, height: 40)
+        infoPizzaButton.addTarget(self, action: #selector(infoPizzaButtonAction), for: .touchUpInside)
+        
+        view.addSubview(infoPizzaButton)
     }
     
     func createSelectButton() {
@@ -59,7 +72,7 @@ class IngridientsPizzaViewController: UIViewController {
     
     func createPizzaLabel() {
         pizzaLabel.frame = CGRect(x: 50, y: 80, width: 300, height: 50)
-        pizzaLabel.text = pizzaArray[numberOfPizza]
+        pizzaLabel.text = pizzas[numberOfPizza]
         pizzaLabel.font = .boldSystemFont(ofSize: 25)
         pizzaLabel.textAlignment = .center
         
@@ -127,7 +140,7 @@ class IngridientsPizzaViewController: UIViewController {
     }
     
     func createPizzaImageView() {
-        pizzaImageView.image = UIImage(named: pizzaArray[numberOfPizza])
+        pizzaImageView.image = UIImage(named: pizzas[numberOfPizza])
         pizzaImageView.frame = CGRect(x: 50, y: 130, width: 300, height: 350)
         
         view.addSubview(pizzaImageView)
@@ -145,12 +158,18 @@ class IngridientsPizzaViewController: UIViewController {
     
     @objc func selectButtonAction() {
         let checkViewController = CheckViewController()
-        checkViewController.pizzaName = pizzaArray[numberOfPizza]
+        checkViewController.pizzaName = pizzas[numberOfPizza]
         checkViewController.isCheese = cheeseSwitch.isOn
         checkViewController.isHam = hamSwitch.isOn
         checkViewController.isMushrooms = mushroomsSwitch.isOn
         checkViewController.isOlives = olivesSwitch.isOn
         
          navigationController?.pushViewController(checkViewController, animated: true)
+    }
+    
+    @objc func infoPizzaButtonAction() {
+        let infoPizzaViewController = InfoPizzaViewController()
+        infoPizzaViewController.numberOfPizza = numberOfPizza
+        navigationController?.pushViewController(infoPizzaViewController, animated: true)
     }
 }

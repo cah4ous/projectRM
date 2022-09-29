@@ -54,7 +54,7 @@ import UIKit
      }
      
      func createCloudImage() {
-         cloudImageView.image = UIImage(named: "pizza.jpeg")
+         cloudImageView.image = UIImage(named: "pizzaMain.jpeg")
          cloudImageView.frame = CGRect(x: 150, y: 100, width: 110, height: 110)
          
          view.addSubview(cloudImageView)
@@ -88,17 +88,7 @@ import UIKit
 
          view.addSubview(eyeButton)
 
-         eyeButton.addTarget(self, action: #selector(togglePassword), for: .touchUpInside)
-     }
-
-     @objc func togglePassword() {
-         let togglePassword = passwordTextField.isSecureTextEntry
-         passwordTextField.isSecureTextEntry = togglePassword ? false : true
-         if togglePassword {
-             eyeButton.setImage(UIImage(systemName: "eye"), for: .normal)
-         } else {
-             eyeButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-         }
+         eyeButton.addTarget(self, action: #selector(togglePasswordAction), for: .touchUpInside)
      }
 
      func createPassTextField() {
@@ -122,6 +112,16 @@ import UIKit
 
          view.addSubview(buttonLogin)
 
+     }
+     
+     @objc func togglePasswordAction() {
+         let togglePassword = passwordTextField.isSecureTextEntry
+         passwordTextField.isSecureTextEntry = togglePassword ? false : true
+         if togglePassword {
+             eyeButton.setImage(UIImage(systemName: "eye"), for: .normal)
+         } else {
+             eyeButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+         }
      }
 
      @objc func goToFoodViewControllerAction() {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7101961328E5BF7B0062700C /* InfoPizzaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7101961228E5BF7B0062700C /* InfoPizzaViewController.swift */; };
 		7123278728E50608005CFDC8 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123278628E50608005CFDC8 /* CheckViewController.swift */; };
 		7123278928E50665005CFDC8 /* IngridientsPizzaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123278828E50665005CFDC8 /* IngridientsPizzaViewController.swift */; };
 		715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD62E28DBA9D900632D00 /* AppDelegate.swift */; };
@@ -16,12 +17,11 @@
 		715BD63828DBA9DB00632D00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63728DBA9DB00632D00 /* Assets.xcassets */; };
 		715BD63B28DBA9DB00632D00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63928DBA9DB00632D00 /* LaunchScreen.storyboard */; };
 		7169BC9528E435E30071C70D /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169BC9428E435E30071C70D /* FoodViewController.swift */; };
-		71806F4528E4E69C00CDE2E3 /* PizzaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71806F4428E4E69C00CDE2E3 /* PizzaTableViewCell.swift */; };
-		71806F4728E4E6D600CDE2E3 /* SushiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71806F4628E4E6D600CDE2E3 /* SushiTableViewCell.swift */; };
 		71806F4928E4F26000CDE2E3 /* PizzaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71806F4828E4F26000CDE2E3 /* PizzaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7101961228E5BF7B0062700C /* InfoPizzaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPizzaViewController.swift; sourceTree = "<group>"; };
 		7123278628E50608005CFDC8 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		7123278828E50665005CFDC8 /* IngridientsPizzaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientsPizzaViewController.swift; sourceTree = "<group>"; };
 		715BD62B28DBA9D900632D00 /* projectRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = projectRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,8 +33,6 @@
 		715BD63A28DBA9DB00632D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		715BD63C28DBA9DB00632D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7169BC9428E435E30071C70D /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
-		71806F4428E4E69C00CDE2E3 /* PizzaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaTableViewCell.swift; sourceTree = "<group>"; };
-		71806F4628E4E6D600CDE2E3 /* SushiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiTableViewCell.swift; sourceTree = "<group>"; };
 		71806F4828E4F26000CDE2E3 /* PizzaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				7169BC9328E4352A0071C70D /* Views */,
-				71806F4328E4E66A00CDE2E3 /* TableView */,
 				715BD62E28DBA9D900632D00 /* AppDelegate.swift */,
 				715BD63028DBA9D900632D00 /* SceneDelegate.swift */,
 				715BD63428DBA9D900632D00 /* Main.storyboard */,
@@ -85,20 +82,12 @@
 			children = (
 				715BD63228DBA9D900632D00 /* LoginViewController.swift */,
 				7169BC9428E435E30071C70D /* FoodViewController.swift */,
+				7101961228E5BF7B0062700C /* InfoPizzaViewController.swift */,
 				71806F4828E4F26000CDE2E3 /* PizzaViewController.swift */,
 				7123278828E50665005CFDC8 /* IngridientsPizzaViewController.swift */,
 				7123278628E50608005CFDC8 /* CheckViewController.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		71806F4328E4E66A00CDE2E3 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				71806F4428E4E69C00CDE2E3 /* PizzaTableViewCell.swift */,
-				71806F4628E4E6D600CDE2E3 /* SushiTableViewCell.swift */,
-			);
-			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,13 +182,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71806F4728E4E6D600CDE2E3 /* SushiTableViewCell.swift in Sources */,
 				71806F4928E4F26000CDE2E3 /* PizzaViewController.swift in Sources */,
+				7101961328E5BF7B0062700C /* InfoPizzaViewController.swift in Sources */,
 				7123278728E50608005CFDC8 /* CheckViewController.swift in Sources */,
 				715BD63328DBA9D900632D00 /* LoginViewController.swift in Sources */,
 				715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */,
 				7169BC9528E435E30071C70D /* FoodViewController.swift in Sources */,
-				71806F4528E4E69C00CDE2E3 /* PizzaTableViewCell.swift in Sources */,
 				7123278928E50665005CFDC8 /* IngridientsPizzaViewController.swift in Sources */,
 				715BD63128DBA9D900632D00 /* SceneDelegate.swift in Sources */,
 			);

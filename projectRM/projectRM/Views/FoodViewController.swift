@@ -8,8 +8,10 @@
 import UIKit
 /// Экран food, позволяет выбрать нужное блюдо
 class FoodViewController: UIViewController {
-
-    let tableView = UITableView(frame: UIScreen.main.bounds, style: UITableView.Style.plain)
+    
+    var pizzaImageView = UIImageView()
+    var sushiImageView = UIImageView()
+    var blackLineImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,65 +21,44 @@ class FoodViewController: UIViewController {
     
     func initMethods() {
         settingsView()
-        createTableView()
+        createPizzaImageView()
+        createSushiImageView()
+        createBlackLineImageView()
     }
     
-    func createTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+    func createBlackLineImageView() {
+        blackLineImageView.image = UIImage(named: "blackLine.png")
+        blackLineImageView.frame = CGRect(x: 0, y: 220, width: 500, height: 25)
         
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = .none
-        view.addSubview(tableView)
+        view.addSubview(blackLineImageView)
+    }
+    
+    func createPizzaImageView() {
+        pizzaImageView.image = UIImage(named: "pizza.png")
+        pizzaImageView.frame = CGRect(x: 50, y: 100, width: 300, height: 100)
         
-        tableView.register(PizzaTableViewCell.self, forCellReuseIdentifier: "PizzaTableViewCell")
-        tableView.register(SushiTableViewCell.self, forCellReuseIdentifier: "SushiTableViewCell")
-
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                          action: #selector(imageTappedAction(tapGestureRecognizer:)))
+        pizzaImageView.isUserInteractionEnabled = true
+        pizzaImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        view.addSubview(pizzaImageView)
+    }
+    
+    func createSushiImageView() {
+        sushiImageView.image = UIImage(named: "sushi.png")
+        sushiImageView.frame = CGRect(x: 50, y: 250, width: 300, height: 75)
+        
+        view.addSubview(sushiImageView)
     }
     
     func settingsView() {
         navigationItem.title = "Food"
         navigationItem.hidesBackButton = true
     }
-
-    @objc func saveAction() {
     
-    }
-}
-
-extension FoodViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath == [0, 0] {
-            let pizzaViewController = PizzaViewController()
-             navigationController?.pushViewController(pizzaViewController, animated: true)
-
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PizzaTableViewCell")
-        else { return UITableViewCell() }
-        
-        switch indexPath {
-        case [0, 0]: cell.imageView?.image = UIImage(named: "pizza.jpeg")
-            cell.textLabel?.text = "Пицца"
-        case [0, 1]: cell.imageView?.image = UIImage(named: "sushi.png")
-            cell.textLabel?.text = "Суши"
-            cell.selectionStyle = .none
-        default:
-            break
-        }
-
-        return cell
-        
+    @objc func imageTappedAction(tapGestureRecognizer: UITapGestureRecognizer) {
+        let pizzaViewController = PizzaViewController()
+        navigationController?.pushViewController(pizzaViewController, animated: true)
     }
 }

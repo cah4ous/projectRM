@@ -7,7 +7,7 @@
 
 import UIKit
 /// Экран, который отвечает за количество колорий в выбранной пользователем пицце по умолчанию
-class InfoPizzaViewController: UIViewController {
+final class InfoPizzaViewController: UIViewController {
     
     var namePizzaLabel = UILabel()
     var caloriesLabel = UILabel()

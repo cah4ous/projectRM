@@ -7,7 +7,7 @@
 
 import UIKit
 /// Экран, который отвечает за выбор пиццы
-class PizzaViewController: UIViewController {
+final class PizzaViewController: UIViewController {
 
     var margaritaImageView = UIImageView()
     var peperoniImageView = UIImageView()
@@ -109,6 +109,7 @@ class PizzaViewController: UIViewController {
     @objc func margaritaButtonAction() {
         let ingridientsPizzaViewController = IngridientsPizzaViewController()
         ingridientsPizzaViewController.numberOfPizza = 0
+        navigationController?.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(ingridientsPizzaViewController, animated: true)
     }
     

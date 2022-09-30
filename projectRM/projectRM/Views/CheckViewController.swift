@@ -7,7 +7,7 @@
 
 import UIKit
 /// Экран, который отвечает за оплату и чек
-class CheckViewController: UIViewController {
+final class CheckViewController: UIViewController {
     
     var pizzaImageView = UIImageView()
     var personalOrderLabel = UILabel()
@@ -189,7 +189,7 @@ class CheckViewController: UIViewController {
            }
        }
 
-    @objc func selectPayButtonAction() {
+    @objc private func selectPayButtonAction() {
         let alertController = UIAlertController(title: "Заказ оплачен!",
                                               message: "Ваш заказ доставят в течение 15 минут. Приятного аппетита",
                                               preferredStyle: .alert)

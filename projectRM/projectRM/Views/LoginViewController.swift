@@ -7,7 +7,7 @@
 
 import UIKit
  /// Экран, который отвечает за вход и регистрацию пользователя
- class LoginViewController: UIViewController {
+ final class LoginViewController: UIViewController {
 
      let phoneTextField = UITextField()
      let passwordTextField = UITextField()

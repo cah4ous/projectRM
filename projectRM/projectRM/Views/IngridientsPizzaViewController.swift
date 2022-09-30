@@ -7,7 +7,7 @@
 
 import UIKit
 /// Этот экран отвечает за выбор ингридиентов для пиццы
-class IngridientsPizzaViewController: UIViewController {
+final class IngridientsPizzaViewController: UIViewController {
     
     var pizzaImageView = UIImageView()
     var pizzaSizeSegmentControl = UISegmentedControl(items: ["Диаметр: 25 см",

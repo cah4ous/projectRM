@@ -7,7 +7,7 @@
 
 import UIKit
 /// Экран food, позволяет выбрать нужное блюдо
-class FoodViewController: UIViewController {
+final class FoodViewController: UIViewController {
     
     var pizzaImageView = UIImageView()
     var sushiImageView = UIImageView()
@@ -81,6 +81,7 @@ class FoodViewController: UIViewController {
     
     @objc func imageTappedAction(tapGestureRecognizer: UITapGestureRecognizer) {
         let pizzaViewController = PizzaViewController()
+        pizzaViewController.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(pizzaViewController, animated: true)
     }
 }

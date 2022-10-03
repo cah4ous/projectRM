@@ -9,14 +9,8 @@ import UIKit
 /// Экран, который отвечает за секундомер
 final class TimerViewController: UIViewController {
     
-    private var hour = 0
-    private var minutes = 0
-    private var seconds = 0
-    private var second = 0
-    private var timer = Timer()
-    private var isTimeRunning = false
-    
     // MARK: - Private IBOutlet
+    
     @IBOutlet private var startButton: UIButton! {
         didSet {
             startButton.layer.cornerRadius = 10
@@ -32,7 +26,7 @@ final class TimerViewController: UIViewController {
     @IBOutlet private var labelTime: UILabel!
     
     // MARK: - Private Visual Components
-    private lazy var timePicker: UIPickerView = {
+    private lazy var timePickerView: UIPickerView = {
         var pickerView = UIPickerView()
         pickerView.dataSource = self
         pickerView.delegate = self
@@ -40,6 +34,15 @@ final class TimerViewController: UIViewController {
         pickerView.setValue(UIColor.white, forKey: "textColor")
         return pickerView
     }()
+    
+    // MARK: - Private Properties
+    
+    private var hour = 0
+    private var minutes = 0
+    private var seconds = 0
+    private var second = 0
+    private var timer = Timer()
+    private var isTimeRunning = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -51,13 +54,13 @@ final class TimerViewController: UIViewController {
     // MARK: - Private IBAction
     @IBAction private func startButtonAction(_ sender: Any) {
         if isTimeRunning == false {
-            minutes = timePicker.selectedRow(inComponent: 1)
-            hour = timePicker.selectedRow(inComponent: 0)
-            second = timePicker.selectedRow(inComponent: 2)
+            minutes = timePickerView.selectedRow(inComponent: 1)
+            hour = timePickerView.selectedRow(inComponent: 0)
+            second = timePickerView.selectedRow(inComponent: 2)
             
             seconds = second + minutes * 60 + hour * 3600
             
-            timePicker.isHidden = true
+            timePickerView.isHidden = true
             labelTime.isHidden = false
             
             runTimer()
@@ -70,7 +73,7 @@ final class TimerViewController: UIViewController {
         labelTime.text = timeString(time: TimeInterval(seconds))
         
         isTimeRunning = false
-        timePicker.isHidden = false
+        timePickerView.isHidden = false
         labelTime.isHidden = true
     }
     
@@ -86,7 +89,7 @@ final class TimerViewController: UIViewController {
     // MARK: - Private Methods
     private func initSettings() {
         labelTime.isHidden = true
-        view.addSubview(timePicker)
+        view.addSubview(timePickerView)
     }
     
     private func runTimer() {

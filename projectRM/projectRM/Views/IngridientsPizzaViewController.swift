@@ -9,30 +9,148 @@ import UIKit
 /// Этот экран отвечает за выбор ингридиентов для пиццы
 final class IngridientsPizzaViewController: UIViewController {
     
-    var pizzaImageView = UIImageView()
-    var pizzaSizeSegmentControl = UISegmentedControl(items: ["Диаметр: 25 см",
-                                                             "Диаметр: 30 см",
-                                                             "Диаметр: 35 см"])
-    var cheeseImageView = UIImageView()
-    var hamImageView = UIImageView()
-    var mushroomsImageView = UIImageView()
-    var pizzaLabel = UILabel()
-    var cheeseLabel = UILabel()
-    var cheeseSwitch = UISwitch()
-    var hamLabel = UILabel()
-    var hamSwitch = UISwitch()
-    var mushroomsLabel = UILabel()
-    var mushroomsSwitch = UISwitch()
-    var olivesLabel = UILabel()
-    var olivesSwitch = UISwitch()
-    var selectButton = UIButton()
-    var infoPizzaButton = UIButton()
-    var priceLabel = UILabel()
+    private lazy var pizzaImageView: UIImageView = {
+        var imageView = UIImageView()
+        imageView.frame = CGRect(x: 50, y: 130, width: 300, height: 350)
+        
+        return imageView
+    }()
     
-    var numberOfPizza = 0
-    var allPizzaPrice = 543
-    var ingridientPizzaPrice = 0
-    var pizzas = ["Маргарита", "Пеперони"]
+    private lazy var pizzaSizeSegmentControl: UISegmentedControl = {
+        var segmentedControl = UISegmentedControl(items: ["Диаметр: 25 см",
+                                                    "Диаметр: 30 см",
+                                                    "Диаметр: 35 см"])
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.frame = CGRect(x: 25, y: 700, width: 350, height: 35)
+        segmentedControl.addTarget(self, action: #selector(pizzaSegmentControlAction), for: .valueChanged)
+        
+        return segmentedControl
+    }()
+    
+    private lazy var cheeseImageView: UIImageView = {
+        var imageView = UIImageView()
+        imageView.image = UIImage(named: "mozzarella.png")
+        imageView.frame = CGRect(x: 30, y: 480, width: 60, height: 60)
+        
+        return imageView
+    }()
+    
+    private lazy var hamImageView: UIImageView = {
+        var imageView = UIImageView()
+        imageView.image = UIImage(named: "ham.png")
+        imageView.frame = CGRect(x: 30, y: 560, width: 60, height: 60)
+        
+        return imageView
+    }()
+    
+    private lazy var mushroomsImageView: UIImageView = {
+        var imageView = UIImageView()
+        imageView.image = UIImage(named: "mushrooms.png")
+        imageView.frame = CGRect(x: 30, y: 630, width: 60, height: 60)
+        
+        return imageView
+    }()
+    
+    private lazy var pizzaLabel: UILabel = {
+        var label = UILabel()
+        label.frame = CGRect(x: 50, y: 80, width: 300, height: 50)
+        label.font = .boldSystemFont(ofSize: 25)
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
+    private lazy var cheeseLabel: UILabel = {
+        var label = UILabel()
+        label.text = "Сыр - 30 ₽"
+        label.frame = CGRect(x: 110, y: 490, width: 150, height: 50)
+        label.font = .boldSystemFont(ofSize: 17)
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
+    private lazy var cheeseSwitch: UISwitch = {
+        var cheSwitch = UISwitch()
+        cheSwitch.frame = CGRect(x: 280, y: 500, width: 0, height: 0)
+        cheSwitch.addTarget(self, action: #selector(cheeseSwitchAction), for: .valueChanged)
+        
+        return cheSwitch
+    }()
+    
+    private lazy var hamLabel: UILabel = {
+        var label = UILabel()
+        label.text = "Ветчина - 50 ₽"
+        label.frame = CGRect(x: 110, y: 560, width: 150, height: 50)
+        label.font = .boldSystemFont(ofSize: 17)
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
+    private lazy var hamSwitch: UISwitch = {
+        var hSwitch = UISwitch()
+        hSwitch.frame = CGRect(x: 280, y: 570, width: 0, height: 0)
+        hSwitch.addTarget(self, action: #selector(hamSwitchAction), for: .valueChanged)
+        
+        return hSwitch
+    }()
+    
+    private lazy var mushroomsLabel: UILabel = {
+        var label = UILabel()
+        label.text = "Грибы - 20 ₽"
+        label.frame = CGRect(x: 110, y: 630, width: 150, height: 50)
+        label.font = .boldSystemFont(ofSize: 17)
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
+    private lazy var mushroomsSwitch: UISwitch = {
+        var mushSwitch = UISwitch()
+        mushSwitch.frame = CGRect(x: 280, y: 640, width: 0, height: 0)
+        mushSwitch.addTarget(self, action: #selector(mushroomsSwitchAction), for: .valueChanged)
+        
+        return mushSwitch
+    }()
+
+    private lazy var selectButton: UIButton = {
+        var button = UIButton()
+        button.backgroundColor = .orange
+        button.setTitle("В корзину", for: .normal)
+        button.subtitleLabel?.textAlignment = .left
+        button.layer.cornerRadius = 6
+        button.frame = CGRect(x: 50, y: 765, width: 300, height: 50)
+        button.addTarget(self, action: #selector(selectButtonAction), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var infoPizzaButton: UIButton = {
+        var button = UIButton()
+        button.setImage(UIImage(systemName: "info.circle"), for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .orange
+        button.layer.cornerRadius = 10
+        button.frame = CGRect(x: 330, y: 90, width: 40, height: 40)
+        button.addTarget(self, action: #selector(infoPizzaButtonAction), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var priceLabel: UILabel = {
+        var label = UILabel()
+        label.frame = CGRect(x: 280, y: 765, width: 50, height: 50)
+        label.text = "565 ₽"
+        label.textColor = .white
+        
+        return label
+    }()
+    
+    public var numberOfPizza = 0
+    public var allPizzaPrice = 543
+    private var ingridientPizzaPrice = 0
+    private var pizzas = ["Маргарита", "Пеперони"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,155 +159,49 @@ final class IngridientsPizzaViewController: UIViewController {
 
     }
     
-    func initMethods() {
+    private func initMethods() {
         createPizzaImageView()
-        createCheeseSwitch()
-        createHamSwitch()
-        createMushroomsSwitch()
-        createCheeseLabel()
-        createHamLabel()
-        createMushroomsLabel()
+        configureViews()
         createPizzaLabel()
-        createSelectButton()
-        createInfoPizzaButton()
-        createPriceLabel()
-        createPizzaSizeSegmentControl()
-        createCheeseImageView()
-        createMushroomsImageView()
-        createHamImageView()
         settingsView()
         
     }
     
-    func createPizzaSizeSegmentControl() {
-        pizzaSizeSegmentControl.selectedSegmentIndex = 0
-        pizzaSizeSegmentControl.frame = CGRect(x: 25, y: 700, width: 350, height: 35)
-        pizzaSizeSegmentControl.addTarget(self, action: #selector(pizzaSegmentControlAction), for: .valueChanged)
-        
+    private func configureViews() {
         view.addSubview(pizzaSizeSegmentControl)
-        
-    }
-    
-    func createInfoPizzaButton() {
-        infoPizzaButton.setImage(UIImage(systemName: "info.circle"), for: .normal)
-        infoPizzaButton.tintColor = .white
-        infoPizzaButton.backgroundColor = .orange
-        infoPizzaButton.layer.cornerRadius = 10
-        infoPizzaButton.frame = CGRect(x: 330, y: 90, width: 40, height: 40)
-        infoPizzaButton.addTarget(self, action: #selector(infoPizzaButtonAction), for: .touchUpInside)
-        
         view.addSubview(infoPizzaButton)
-    }
-    
-    func createPriceLabel() {
-        priceLabel.frame = CGRect(x: 280, y: 765, width: 50, height: 50)
-        priceLabel.text = "565 ₽"
-        priceLabel.textColor = .white
-        
         view.addSubview(priceLabel)
-    }
-    
-    func createSelectButton() {
-        selectButton.backgroundColor = .orange
-        selectButton.setTitle("В корзину", for: .normal)
-        selectButton.subtitleLabel?.textAlignment = .left
-        selectButton.layer.cornerRadius = 6
-        selectButton.frame = CGRect(x: 50, y: 765, width: 300, height: 50)
-        selectButton.addTarget(self, action: #selector(selectButtonAction), for: .touchUpInside)
-        
         view.addSubview(selectButton)
-    }
-    
-    func createPizzaLabel() {
-        pizzaLabel.frame = CGRect(x: 50, y: 80, width: 300, height: 50)
-        pizzaLabel.text = pizzas[numberOfPizza]
-        pizzaLabel.font = .boldSystemFont(ofSize: 25)
-        pizzaLabel.textAlignment = .center
+        view.addSubview(cheeseImageView)
+        view.addSubview(hamImageView)
+        view.addSubview(mushroomsImageView)
+        view.addSubview(cheeseLabel)
+        view.addSubview(cheeseSwitch)
+        view.addSubview(hamLabel)
+        view.addSubview(hamSwitch)
+        view.addSubview(mushroomsLabel)
+        view.addSubview(mushroomsSwitch)
         
+    }
+
+    private func createPizzaLabel() {
+        
+        pizzaLabel.text = pizzas[numberOfPizza]
+
         view.addSubview(pizzaLabel)
     }
-    
-    func createCheeseImageView() {
-        cheeseImageView.image = UIImage(named: "mozzarella.png")
-        cheeseImageView.frame = CGRect(x: 30, y: 480, width: 60, height: 60)
-        
-        view.addSubview(cheeseImageView)
-    }
-    
-    func createHamImageView() {
-        hamImageView.image = UIImage(named: "ham.png")
-        hamImageView.frame = CGRect(x: 30, y: 560, width: 60, height: 60)
-        
-        view.addSubview(hamImageView)
-    }
-    
-    func createMushroomsImageView() {
-        mushroomsImageView.image = UIImage(named: "mushrooms.png")
-        mushroomsImageView.frame = CGRect(x: 30, y: 630, width: 60, height: 60)
-        
-        view.addSubview(mushroomsImageView)
-    }
-    
-    func createCheeseLabel() {
-        cheeseLabel.text = "Сыр - 30 ₽"
-        cheeseLabel.frame = CGRect(x: 110, y: 490, width: 150, height: 50)
-        cheeseLabel.font = .boldSystemFont(ofSize: 17)
-        cheeseLabel.textAlignment = .center
-        
-        view.addSubview(cheeseLabel)
-    }
-    
-    func createCheeseSwitch() {
-        cheeseSwitch.frame = CGRect(x: 280, y: 500, width: 0, height: 0)
-        cheeseSwitch.addTarget(self, action: #selector(cheeseSwitchAction), for: .valueChanged)
-        view.addSubview(cheeseSwitch)
-    }
-    
-    func createHamLabel() {
-        hamLabel.text = "Ветчина - 50 ₽"
-        hamLabel.frame = CGRect(x: 110, y: 560, width: 150, height: 50)
-        hamLabel.font = .boldSystemFont(ofSize: 17)
-        hamLabel.textAlignment = .center
-        
-        view.addSubview(hamLabel)
-    }
-    
-    func createHamSwitch() {
-        hamSwitch.frame = CGRect(x: 280, y: 570, width: 0, height: 0)
-        hamSwitch.addTarget(self, action: #selector(hamSwitchAction), for: .valueChanged)
-        
-        view.addSubview(hamSwitch)
-    }
-    
-    func createMushroomsLabel() {
-        mushroomsLabel.text = "Грибы - 20 ₽"
-        mushroomsLabel.frame = CGRect(x: 110, y: 630, width: 150, height: 50)
-        mushroomsLabel.font = .boldSystemFont(ofSize: 17)
-        mushroomsLabel.textAlignment = .center
-        
-        view.addSubview(mushroomsLabel)
-    }
-    
-    func createMushroomsSwitch() {
-        mushroomsSwitch.frame = CGRect(x: 280, y: 640, width: 0, height: 0)
-        mushroomsSwitch.addTarget(self, action: #selector(mushroomsSwitchAction), for: .valueChanged)
-        
-        view.addSubview(mushroomsSwitch)
-    }
-    
-    func createPizzaImageView() {
+
+    private func createPizzaImageView() {
         pizzaImageView.image = UIImage(named: pizzas[numberOfPizza])
-        pizzaImageView.frame = CGRect(x: 50, y: 130, width: 300, height: 350)
-        
         view.addSubview(pizzaImageView)
     }
     
-    func settingsView() {
+    private func settingsView() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
                                                            style: .plain, target: self, action: #selector(goBackAction))
     }
     
-    @objc func cheeseSwitchAction() {
+    @objc private func cheeseSwitchAction() {
         if cheeseSwitch.isOn {
             ingridientPizzaPrice += 30
         } else {
@@ -198,7 +210,7 @@ final class IngridientsPizzaViewController: UIViewController {
         priceLabel.text = "\(allPizzaPrice + ingridientPizzaPrice) ₽"
     }
     
-    @objc func hamSwitchAction() {
+    @objc private func hamSwitchAction() {
         if hamSwitch.isOn {
             ingridientPizzaPrice += 50
         } else {
@@ -207,7 +219,7 @@ final class IngridientsPizzaViewController: UIViewController {
         priceLabel.text = "\(allPizzaPrice + ingridientPizzaPrice) ₽"
     }
     
-    @objc func mushroomsSwitchAction() {
+    @objc private func mushroomsSwitchAction() {
         if mushroomsSwitch.isOn {
             ingridientPizzaPrice += 20
         } else {
@@ -216,7 +228,7 @@ final class IngridientsPizzaViewController: UIViewController {
         priceLabel.text = "\(allPizzaPrice + ingridientPizzaPrice) ₽"
     }
     
-    @objc func pizzaSegmentControlAction() {
+    @objc private func pizzaSegmentControlAction() {
         switch pizzaSizeSegmentControl.selectedSegmentIndex {
         case 0:
             allPizzaPrice = 543
@@ -230,12 +242,12 @@ final class IngridientsPizzaViewController: UIViewController {
         priceLabel.text = "\(allPizzaPrice + ingridientPizzaPrice) ₽"
     }
     
-    @objc func goBackAction() {
+    @objc private func goBackAction() {
         let pizzaViewController = PizzaViewController()
          navigationController?.pushViewController(pizzaViewController, animated: true)
     }
     
-    @objc func selectButtonAction() {
+    @objc private func selectButtonAction() {
         let checkViewController = CheckViewController()
         checkViewController.value = allPizzaPrice + ingridientPizzaPrice
         checkViewController.pizzaName = pizzas[numberOfPizza]
@@ -246,7 +258,7 @@ final class IngridientsPizzaViewController: UIViewController {
          navigationController?.pushViewController(checkViewController, animated: true)
     }
     
-    @objc func infoPizzaButtonAction() {
+    @objc private func infoPizzaButtonAction() {
         let infoPizzaViewController = InfoPizzaViewController()
         infoPizzaViewController.numberOfPizza = numberOfPizza
         navigationController?.pushViewController(infoPizzaViewController, animated: true)

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// Экран, который отвечает за функционал всего приложения
+/// Экран, который отвечает за весь функционал приложения 
 final class TextRedactorViewController: UIViewController {
     
     // MARK: - Private Visual Components

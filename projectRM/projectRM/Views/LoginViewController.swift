@@ -8,7 +8,10 @@
 import UIKit
  /// Экран, который отвечает за вход и регистрацию пользователя
  final class LoginViewController: UIViewController {
-
+     
+     private var registration = Registration()
+     
+     // MARK: - Private Visual Components
      private lazy var phoneTextField: UITextField = {
          var textField = UITextField()
          textField.placeholder = "Телефон..."
@@ -123,32 +126,15 @@ import UIKit
          
          return button
      }()
-
-     private var registration = Registration()
      
+     // MARK: - Lifecycle
      override func viewDidLoad() {
          super.viewDidLoad()
          view.backgroundColor = .white
          initMethods()
      }
-
-     private func initMethods() {
-         configureViews()
-     }
      
-     private func configureViews() {
-         view.addSubview(phoneNumberLabel)
-         view.addSubview(passwordLabel)
-         view.addSubview(cloudImageView)
-         view.addSubview(phoneTextField)
-         view.addSubview(singLabel)
-         view.addSubview(eyeButton)
-         view.addSubview(passwordTextField)
-         view.addSubview(loginButton)
-         view.addSubview(registrationButton)
-         view.addSubview(fastSignInButton)
-     }
-     
+     // MARK: - Private IBAction
      @objc private func signInButtonAction() {
          let foodViewController = FoodViewController()
          navigationController?.pushViewController(foodViewController, animated: true)
@@ -175,12 +161,30 @@ import UIKit
               let loginAndPassInfo = registration.getFromMap()
               let login = phoneTextField.text ?? "nil"
               let pass = passwordTextField.text ?? "nil"
-              if loginAndPassInfo.keys.contains(login) {
-                  if loginAndPassInfo[login] == pass {
-                      let foodViewController = FoodViewController()
-                      navigationController?.pushViewController(foodViewController, animated: true)
-                  }
+              guard loginAndPassInfo.keys.contains(login) else { return }
+              if loginAndPassInfo[login] == pass {
+                  let foodViewController = FoodViewController()
+                  navigationController?.pushViewController(foodViewController, animated: true)
               }
+    
           }
+     }
+     
+     // MARK: - Private Methods
+     private func initMethods() {
+         configureViews()
+     }
+     
+     private func configureViews() {
+         view.addSubview(phoneNumberLabel)
+         view.addSubview(passwordLabel)
+         view.addSubview(cloudImageView)
+         view.addSubview(phoneTextField)
+         view.addSubview(singLabel)
+         view.addSubview(eyeButton)
+         view.addSubview(passwordTextField)
+         view.addSubview(loginButton)
+         view.addSubview(registrationButton)
+         view.addSubview(fastSignInButton)
      }
  }

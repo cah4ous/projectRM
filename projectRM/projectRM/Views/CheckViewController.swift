@@ -8,10 +8,39 @@
 import UIKit
 /// Экран, который отвечает за оплату и чек
 final class CheckViewController: UIViewController {
+    
+    weak var delegate: PopToRootVC?
+    
+    public var isCheese = false
+    public var isHam = false
+    public var isMushrooms = false
+    public var pizzaName = "nil"
+    public var value = 0
+    public var numberOfPizza = 0
+    
+    private var ingridients = ["Сыр моцарелла", "Ветчина", "Грибы"]
+    private var height = 350
+    private var pizzas = ["Маргарита", "Пеперони"]
+    private var desctiptionPizza = ["Томатный соус, моцарелла, помидоры, орегано",
+                            "Томатный соус, моцарелла, пеперони"
+    ]
+    
+    
+    // MARK: - Private IBOutlet
+    
+    private var mushroomsLabel = UILabel()
+    private var hamLabel = UILabel()
+    private var cheeseLabel = UILabel()
+    private var payCashLabel = UILabel()
+    private var payCashSwitch = UISwitch()
+    private var payCardLabel = UILabel()
+    private var payCardSwitch = UISwitch()
+    
+    // MARK: - Private Visual Components
     private lazy var pizzaSizeSegmentControl: UISegmentedControl = {
-        var segmentControl = UISegmentedControl(items: ["Доставка",
-                                                        "Самовывоз",
-                                                       ])
+        var segmentControl = UISegmentedControl(
+            items: ["Доставка", "Самовывоз"]
+        )
         segmentControl.selectedSegmentIndex = 0
         segmentControl.frame = CGRect(x: 25, y: 700, width: 350, height: 35)
         
@@ -43,10 +72,7 @@ final class CheckViewController: UIViewController {
         
         return label
     }()
-    
-    var mushroomsLabel = UILabel()
-    var hamLabel = UILabel()
-    var cheeseLabel = UILabel()
+
     private lazy var descriptionPizzaLabel: UILabel = {
         var label = UILabel()
         label.frame = CGRect(x: 150, y: 200, width: 240, height: 50)
@@ -67,18 +93,15 @@ final class CheckViewController: UIViewController {
         return button
     }()
     
-    var payCashLabel = UILabel()
-    var payCashSwitch = UISwitch()
-    var payCardLabel = UILabel()
-    var payCardSwitch = UISwitch()
-    var priceLabel: UILabel = {
+    private lazy var priceLabel: UILabel = {
         var label = UILabel()
         label.frame = CGRect(x: 280, y: 765, width: 50, height: 50)
         label.textColor = .white
         
         return label
     }()
-    var detailPizzaLabel: UILabel = {
+    
+    private lazy var detailPizzaLabel: UILabel = {
         var label = UILabel()
         label.frame = CGRect(x: 50, y: 300, width: 300, height: 50)
         label.text = "Детали заказа: "
@@ -87,7 +110,8 @@ final class CheckViewController: UIViewController {
         
         return label
     }()
-    var promocodeTextField: UITextField = {
+    
+    private lazy var promocodeTextField: UITextField = {
         var textField = UITextField()
         textField.placeholder = "Промокод..."
         textField.borderStyle = .roundedRect
@@ -97,34 +121,42 @@ final class CheckViewController: UIViewController {
         
         return textField
     }()
-    var pizzas = ["Маргарита", "Пеперони"]
-    var desctiptionPizza = ["Томатный соус, моцарелла, помидоры, орегано",
-                            "Томатный соус, моцарелла, пеперони"
-    ]
 
-    var isCheese = false
-    var isHam = false
-    var isMushrooms = false
-    
-    var pizzaName = "nil"
-    var height = 350
-    var value = 0
-    var numberOfPizza = 0
-
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         initMethods()
     }
+
+    // MARK: - Private IBAction
+    @objc private func selectPayButtonAction() {
+        let alertController = UIAlertController(title: "Заказ оплачен!",
+                                              message: "Ваш заказ доставят в течение 15 минут. Приятного аппетита",
+                                              preferredStyle: .alert)
+
+         let actionAlert = UIAlertAction(title: "OK", style: .default) { _ in
+             self.view.isHidden = true
+             self.dismiss(animated: true)
+             self.delegate?.goToBack()
+         }
+        let actionAlertTwo = UIAlertAction(title: "Cancel", style: .default)
+        
+        alertController.addAction(actionAlert)
+        alertController.addAction(actionAlertTwo)
+        
+        present(alertController, animated: true)
+    }
     
-    func initMethods() {
+    // MARK: - Private Methods
+    private func initMethods() {
         createPriceLabel()
         createProductLabel()
         createProductImageView()
         createDescriptionProductLabel()
-        createCheeseLabel(height: height, isActive: isCheese)
-        createHamLabel(height: height, isActive: isHam)
-        createMushroomsLabel(height: height, isActive: isMushrooms)
+        createDishLabel(label: cheeseLabel, height: height, isActive: isCheese, text: "Сыр моцарелла")
+        createDishLabel(label: hamLabel, height: height, isActive: isHam, text: "Ветчина")
+        createDishLabel(label: mushroomsLabel, height: height, isActive: isMushrooms, text: "Грибы")
         settingsView()
     }
     
@@ -140,24 +172,24 @@ final class CheckViewController: UIViewController {
         view.addSubview(personalOrderLabel)
     }
     
-    func createDescriptionProductLabel() {
+    private func createDescriptionProductLabel() {
         print(desctiptionPizza[numberOfPizza])
         print(numberOfPizza)
         descriptionPizzaLabel.text = "\(desctiptionPizza[numberOfPizza])"
         
     }
     
-    func createProductLabel() {
+    private func createProductLabel() {
         pizzaNameLabel.text = pizzas[numberOfPizza]
         
     }
     
-    func createProductImageView() {
+    private func createProductImageView() {
         pizzaImageView.image = UIImage(named: "\(pizzas[numberOfPizza]).png")
         
     }
     
-    func createPriceLabel() {
+    private func createPriceLabel() {
         priceLabel.text = "\(value) ₽"
         
     }
@@ -167,62 +199,17 @@ final class CheckViewController: UIViewController {
         navigationItem.hidesBackButton = true
     }
     
-    private func createCheeseLabel(height: Int, isActive: Bool) {
-           if isActive {
-               cheeseLabel.frame = CGRect(x: 50, y: height, width: 300, height: 50)
-               cheeseLabel.font = .boldSystemFont(ofSize: 17)
-               cheeseLabel.textColor = .gray
+    private func createDishLabel(label: UILabel, height: Int, isActive: Bool, text: String) {
+        if isActive {
+            label.frame = CGRect(x: 50, y: height, width: 300, height: 50)
+            label.font = .boldSystemFont(ofSize: 17)
+            label.textColor = .gray
 
-               self.height += 60
+            self.height += 60
 
-               cheeseLabel.text = "Сыр моцарелла"
+            label.text = text
 
-               view.addSubview(cheeseLabel)
-           }
-       }
-
-    private func createHamLabel(height: Int, isActive: Bool) {
-           if isActive {
-               hamLabel.frame = CGRect(x: 50, y: height, width: 300, height: 50)
-               hamLabel.font = .boldSystemFont(ofSize: 17)
-               hamLabel.textColor = .gray
-
-               self.height += 60
-
-               hamLabel.text = "Ветчина"
-
-               view.addSubview(hamLabel)
-           }
-       }
-
-    private func createMushroomsLabel(height: Int, isActive: Bool) {
-           if isActive {
-               mushroomsLabel.frame = CGRect(x: 50, y: height, width: 300, height: 50)
-               mushroomsLabel.font = .boldSystemFont(ofSize: 17)
-               mushroomsLabel.textColor = .gray
-
-               self.height += 60
-
-               mushroomsLabel.text = "Грибы"
-
-               view.addSubview(mushroomsLabel)
-           }
-       }
-
-    @objc private func selectPayButtonAction() {
-        let alertController = UIAlertController(title: "Заказ оплачен!",
-                                              message: "Ваш заказ доставят в течение 15 минут. Приятного аппетита",
-                                              preferredStyle: .alert)
-
-         let actionAlert = UIAlertAction(title: "OK", style: .default) { _ in
-             let foodViewController = FoodViewController()
-             self.navigationController?.pushViewController(foodViewController, animated: true)
-         }
-        let actionAlertTwo = UIAlertAction(title: "Cancel", style: .default)
-        
-        alertController.addAction(actionAlert)
-        alertController.addAction(actionAlertTwo)
-        
-        present(alertController, animated: true)
+            view.addSubview(label)
+        }
     }
 }

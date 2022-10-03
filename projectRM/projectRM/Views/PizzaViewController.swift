@@ -8,7 +8,8 @@
 import UIKit
 /// Экран, который отвечает за выбор пиццы
 final class PizzaViewController: UIViewController {
-
+    
+    // MARK: - Private Visual Components
     private lazy var margaritaImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.image = UIImage(named: "Маргарита.png")
@@ -44,6 +45,7 @@ final class PizzaViewController: UIViewController {
         
         return label
     }()
+    
     private lazy var margaritaButton: UIButton = {
         var button = UIButton()
         button.setTitle("+", for: .normal)
@@ -74,29 +76,15 @@ final class PizzaViewController: UIViewController {
         return imageView
     }()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureViews()
         
     }
-
-    private func configureViews() {
-        view.addSubview(blackLineImageView)
-        view.addSubview(margaritaButton)
-        view.addSubview(peperoniButton)
-        view.addSubview(margaritaLabel)
-        view.addSubview(peperoniLabel)
-        view.addSubview(margaritaImageView)
-        view.addSubview(peperoniImageView)
-    }
-
-    private func settingsView() {
-        navigationItem.title = "Pizza"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
-                                                           style: .plain, target: self, action: #selector(goBackAction))
-    }
     
+    // MARK: - Private IBAction
     @objc private func goBackAction() {
         let foodViewController = FoodViewController()
          navigationController?.pushViewController(foodViewController, animated: true)
@@ -113,5 +101,22 @@ final class PizzaViewController: UIViewController {
         let ingridientsPizzaViewController = IngridientsPizzaViewController()
         ingridientsPizzaViewController.numberOfPizza = 1
         navigationController?.pushViewController(ingridientsPizzaViewController, animated: true)
+    }
+    
+    // MARK: - Private Methods
+    private func configureViews() {
+        view.addSubview(blackLineImageView)
+        view.addSubview(margaritaButton)
+        view.addSubview(peperoniButton)
+        view.addSubview(margaritaLabel)
+        view.addSubview(peperoniLabel)
+        view.addSubview(margaritaImageView)
+        view.addSubview(peperoniImageView)
+    }
+
+    private func settingsView() {
+        navigationItem.title = "Pizza"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
+                                                           style: .plain, target: self, action: #selector(goBackAction))
     }
 }

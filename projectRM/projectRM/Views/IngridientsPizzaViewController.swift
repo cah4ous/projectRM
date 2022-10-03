@@ -6,9 +6,16 @@
 //
 
 import UIKit
+
 /// Этот экран отвечает за выбор ингридиентов для пиццы
 final class IngridientsPizzaViewController: UIViewController {
     
+    public var numberOfPizza = 0
+    public var allPizzaPrice = 543
+    private var ingridientPizzaPrice = 0
+    private var pizzas = ["Маргарита", "Пеперони"]
+    
+    // MARK: - Private Visual Components
     private lazy var pizzaImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.frame = CGRect(x: 50, y: 130, width: 300, height: 350)
@@ -146,61 +153,16 @@ final class IngridientsPizzaViewController: UIViewController {
         
         return label
     }()
-    
-    public var numberOfPizza = 0
-    public var allPizzaPrice = 543
-    private var ingridientPizzaPrice = 0
-    private var pizzas = ["Маргарита", "Пеперони"]
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         initMethods()
 
     }
-    
-    private func initMethods() {
-        createPizzaImageView()
-        configureViews()
-        createPizzaLabel()
-        settingsView()
-        
-    }
-    
-    private func configureViews() {
-        view.addSubview(pizzaSizeSegmentControl)
-        view.addSubview(infoPizzaButton)
-        view.addSubview(priceLabel)
-        view.addSubview(selectButton)
-        view.addSubview(cheeseImageView)
-        view.addSubview(hamImageView)
-        view.addSubview(mushroomsImageView)
-        view.addSubview(cheeseLabel)
-        view.addSubview(cheeseSwitch)
-        view.addSubview(hamLabel)
-        view.addSubview(hamSwitch)
-        view.addSubview(mushroomsLabel)
-        view.addSubview(mushroomsSwitch)
-        
-    }
 
-    private func createPizzaLabel() {
-        
-        pizzaLabel.text = pizzas[numberOfPizza]
-
-        view.addSubview(pizzaLabel)
-    }
-
-    private func createPizzaImageView() {
-        pizzaImageView.image = UIImage(named: pizzas[numberOfPizza])
-        view.addSubview(pizzaImageView)
-    }
-    
-    private func settingsView() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
-                                                           style: .plain, target: self, action: #selector(goBackAction))
-    }
-    
+    // MARK: - Private IBAction
     @objc private func cheeseSwitchAction() {
         if cheeseSwitch.isOn {
             ingridientPizzaPrice += 30
@@ -262,5 +224,48 @@ final class IngridientsPizzaViewController: UIViewController {
         let infoPizzaViewController = InfoPizzaViewController()
         infoPizzaViewController.numberOfPizza = numberOfPizza
         navigationController?.pushViewController(infoPizzaViewController, animated: true)
+    }
+    
+    // MARK: - Private Methods
+    private func initMethods() {
+        createPizzaImageView()
+        configureViews()
+        createPizzaLabel()
+        settingsView()
+        
+    }
+    
+    private func configureViews() {
+        view.addSubview(pizzaSizeSegmentControl)
+        view.addSubview(infoPizzaButton)
+        view.addSubview(priceLabel)
+        view.addSubview(selectButton)
+        view.addSubview(cheeseImageView)
+        view.addSubview(hamImageView)
+        view.addSubview(mushroomsImageView)
+        view.addSubview(cheeseLabel)
+        view.addSubview(cheeseSwitch)
+        view.addSubview(hamLabel)
+        view.addSubview(hamSwitch)
+        view.addSubview(mushroomsLabel)
+        view.addSubview(mushroomsSwitch)
+        
+    }
+
+    private func createPizzaLabel() {
+        
+        pizzaLabel.text = pizzas[numberOfPizza]
+
+        view.addSubview(pizzaLabel)
+    }
+
+    private func createPizzaImageView() {
+        pizzaImageView.image = UIImage(named: pizzas[numberOfPizza])
+        view.addSubview(pizzaImageView)
+    }
+    
+    private func settingsView() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
+                                                           style: .plain, target: self, action: #selector(goBackAction))
     }
 }

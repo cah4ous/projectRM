@@ -7,13 +7,16 @@
 
 import UIKit
 /// Этот экран отвечает за будильник
-class AlarmViewController: UIViewController {
-    @IBOutlet var settingsButton: UIButton! {
+final class AlarmViewController: UIViewController {
+    
+    // MARK: - Private IBOutlet
+    @IBOutlet private var settingsButton: UIButton! {
         didSet {
             settingsButton.layer.cornerRadius = 10
         }
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }

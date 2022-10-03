@@ -7,45 +7,48 @@
 
 import UIKit
 /// Экран, который отвечает за секундомер
-class TimerViewController: UIViewController {
+final class TimerViewController: UIViewController {
     
-    @IBOutlet var startButton: UIButton! {
+    private var hour = 0
+    private var minutes = 0
+    private var seconds = 0
+    private var second = 0
+    private var timer = Timer()
+    private var isTimeRunning = false
+    
+    // MARK: - Private IBOutlet
+    @IBOutlet private var startButton: UIButton! {
         didSet {
             startButton.layer.cornerRadius = 10
         }
     }
     
-    @IBOutlet var cancelButton: UIButton! {
+    @IBOutlet private var cancelButton: UIButton! {
         didSet {
             cancelButton.layer.cornerRadius = 10
         }
     }
     
-    @IBOutlet var labelTime: UILabel!
+    @IBOutlet private var labelTime: UILabel!
     
+    // MARK: - Private Visual Components
     private lazy var timePicker: UIPickerView = {
         var pickerView = UIPickerView()
         pickerView.dataSource = self
         pickerView.delegate = self
-        pickerView.backgroundColor = .white
         pickerView.frame = CGRect(x: 50, y: 100, width: 300, height: 200)
-        
+        pickerView.setValue(UIColor.white, forKey: "textColor")
         return pickerView
     }()
     
-    var hour = 0
-    var minutes = 0
-    var seconds = 0
-    var second = 0
-    var timer = Timer()
-    var isTimeRunning = false
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initSettings()
         
     }
     
+    // MARK: - Private IBAction
     @IBAction private func startButtonAction(_ sender: Any) {
         if isTimeRunning == false {
             minutes = timePicker.selectedRow(inComponent: 1)
@@ -71,6 +74,16 @@ class TimerViewController: UIViewController {
         labelTime.isHidden = true
     }
     
+    @objc private func updateTimer() {
+        if seconds < 1 {
+             timer.invalidate()
+        } else {
+             seconds -= 1
+             labelTime.text = timeString(time: TimeInterval(seconds))
+        }
+    }
+    
+    // MARK: - Private Methods
     private func initSettings() {
         labelTime.isHidden = true
         view.addSubview(timePicker)
@@ -89,19 +102,9 @@ class TimerViewController: UIViewController {
         let seconds = Int(time) % 60
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
-    
-    @objc private func updateTimer() {
-        if seconds < 1 {
-             timer.invalidate()
-        } else {
-             seconds -= 1
-             labelTime.text = timeString(time: TimeInterval(seconds))
-        }
-    }
-    
 }
 
-/// UIPickerDelegate, UIPickerViewDataSource
+// UIPickerDelegate, UIPickerViewDataSource
 
 extension TimerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

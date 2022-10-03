@@ -17,12 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions) {
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
-                let navigationViewController = UINavigationController(rootViewController: TextRedactorViewController())
                 
-                let tabBarController = UITabBarController()
-                tabBarController.setViewControllers([navigationViewController], animated: true)
-                                                    
-                window.rootViewController = tabBarController
+                window.rootViewController = ViewController()
                 self.window = window
                 window.makeKeyAndVisible()
               }

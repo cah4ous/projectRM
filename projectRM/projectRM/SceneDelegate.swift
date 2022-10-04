@@ -15,12 +15,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions) {
-            if let windowScene = scene as? UIWindowScene {
-                let window = UIWindow(windowScene: windowScene)
-                
-                window.rootViewController = ViewController()
-                self.window = window
-                window.makeKeyAndVisible()
-              }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+
+        self.loadBaseController()
     }
+    
+    func loadBaseController() {
+       let storyboard = UIStoryboard(name: "Main", bundle: nil)
+       guard let window = self.window else { return }
+       window.makeKeyAndVisible()
+       if UserDefaults.standard.bool(forKey: "isLoggedIn") == false {
+           let loginViewController = storyboard.instantiateViewController(withIdentifier: "regVC")
+           self.window?.rootViewController = loginViewController
+       } else {
+           let personViewController = storyboard.instantiateViewController(withIdentifier: "personalVC")
+           let navigationPersonViewController = UINavigationController(rootViewController: personViewController)
+           self.window?.rootViewController = navigationPersonViewController
+       }
+        self.window?.makeKeyAndVisible()
+    }
+    
 }

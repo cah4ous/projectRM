@@ -6,9 +6,10 @@
 //
 
 import UIKit
-/// Повтор кода Евгения из ролика
+/// Экран отвечает за чтение какого-то текста и его настройку
 final class ReadBookViewController: UIViewController {
     
+    // MARK: - Private Visual Components
     public lazy var readingTextView: UITextView = {
         let textView = UITextView()
         textView.frame = CGRect(x: 20, y: 100, width: 370,
@@ -149,12 +150,14 @@ final class ReadBookViewController: UIViewController {
         return pickerView
     }()
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
 
     }
     
+    // MARK: - Private IBAction
     @objc private func redButtonAction() {
         readingTextView.textColor = .red
     }

@@ -13,6 +13,7 @@
 		715BD63628DBA9D900632D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63428DBA9D900632D00 /* Main.storyboard */; };
 		715BD63828DBA9DB00632D00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63728DBA9DB00632D00 /* Assets.xcassets */; };
 		715BD63B28DBA9DB00632D00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715BD63928DBA9DB00632D00 /* LaunchScreen.storyboard */; };
+		71A359F728ECD65200212392 /* ReadBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A359F628ECD65200212392 /* ReadBookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		715BD63728DBA9DB00632D00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		715BD63A28DBA9DB00632D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		715BD63C28DBA9DB00632D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71A359F628ECD65200212392 /* ReadBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				715BD62E28DBA9D900632D00 /* AppDelegate.swift */,
 				715BD63028DBA9D900632D00 /* SceneDelegate.swift */,
 				715BD63228DBA9D900632D00 /* ViewController.swift */,
+				71A359F628ECD65200212392 /* ReadBookViewController.swift */,
 				715BD63428DBA9D900632D00 /* Main.storyboard */,
 				715BD63728DBA9DB00632D00 /* Assets.xcassets */,
 				715BD63928DBA9DB00632D00 /* LaunchScreen.storyboard */,
@@ -159,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71A359F728ECD65200212392 /* ReadBookViewController.swift in Sources */,
 				715BD63328DBA9D900632D00 /* ViewController.swift in Sources */,
 				715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */,
 				715BD63128DBA9D900632D00 /* SceneDelegate.swift in Sources */,

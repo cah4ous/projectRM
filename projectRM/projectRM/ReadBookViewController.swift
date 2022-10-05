@@ -15,7 +15,13 @@ final class ReadBookViewController: UIViewController {
         textView.frame = CGRect(x: 20, y: 100, width: 370,
                                 height: 250
         )
-        textView.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        textView.text = """
+The White Rabbit put on his spectacles. "Where shall I begin,
+please your Majesty?" he asked.
+
+"Begin at the beginning," the King said gravely, "and go on
+till you come to the end; then stop."
+"""
         textView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         textView.font = UIFont.systemFont(ofSize: 17)
         
@@ -153,7 +159,7 @@ final class ReadBookViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViews()
+        initMethods()
 
     }
     
@@ -179,7 +185,7 @@ final class ReadBookViewController: UIViewController {
       }
     
     @objc private func lowButtonAction() {
-        readingTextView.font = .systemFont(ofSize: CGFloat(fontSlider.value))
+        readingTextView.font = readingTextView.font
     }
     
     @objc private func highButtonAction() {
@@ -188,13 +194,16 @@ final class ReadBookViewController: UIViewController {
     
     @objc private func nightSwitchAction() {
         if nightShiftSwitch.isOn {
-            readingTextView.backgroundColor = .gray
+            readingTextView.backgroundColor = .lightGray
         } else {
             readingTextView.backgroundColor = .white
         }
     }
     
     // MARK: - Private Methods
+    private func initMethods() {
+        configureViews()
+    }
     private func configureViews() {
         view.backgroundColor = .white
         view.addSubview(readingTextView)

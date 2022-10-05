@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7125BB9628ECF6E100BF739E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125BB9528ECF6E100BF739E /* SignInViewController.swift */; };
 		715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD62E28DBA9D900632D00 /* AppDelegate.swift */; };
 		715BD63128DBA9D900632D00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD63028DBA9D900632D00 /* SceneDelegate.swift */; };
 		715BD63328DBA9D900632D00 /* RepeatVideoViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BD63228DBA9D900632D00 /* RepeatVideoViewControllerViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7125BB9528ECF6E100BF739E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		715BD62B28DBA9D900632D00 /* projectRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = projectRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		715BD62E28DBA9D900632D00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		715BD63028DBA9D900632D00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				715BD63228DBA9D900632D00 /* RepeatVideoViewControllerViewController.swift */,
 				71A6379028EC339900B63FB6 /* RegistrationViewController.swift */,
 				71A359F028ECB7EE00212392 /* AlreadyExistPersonViewController.swift */,
+				7125BB9528ECF6E100BF739E /* SignInViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7125BB9628ECF6E100BF739E /* SignInViewController.swift in Sources */,
 				715BD63328DBA9D900632D00 /* RepeatVideoViewControllerViewController.swift in Sources */,
 				715BD62F28DBA9D900632D00 /* AppDelegate.swift in Sources */,
 				71A359F328ECC78B00212392 /* User.swift in Sources */,

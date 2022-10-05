@@ -7,7 +7,7 @@
 
 import UIKit
 /// FirstVC
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
@@ -15,18 +15,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let signInViewController = storyboard.instantiateViewController(withIdentifier: "signInVC")
+//        window?.rootViewController = signInViewController
+//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//        window?.windowScene = windowScene
+//        window?.makeKeyAndVisible()
 
-        self.loadBaseController()
+//        self.loadBaseController()
     }
     
     func loadBaseController() {
        let storyboard = UIStoryboard(name: "Main", bundle: nil)
        guard let window = self.window else { return }
        window.makeKeyAndVisible()
+
        if UserDefaults.standard.bool(forKey: "isLoggedIn") == false {
            let loginViewController = storyboard.instantiateViewController(withIdentifier: "regVC")
            self.window?.rootViewController = loginViewController

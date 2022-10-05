@@ -36,6 +36,8 @@ final class RegistrationViewController: UIViewController, UITextFieldDelegate {
         if let encodedUser = try? encoder.encode(user) {
             defaults.set(encodedUser, forKey: "user")
         }
+        
+        performSegue(withIdentifier: "signVC", sender: nil)
     }
     
     // MARK: - Private Methods

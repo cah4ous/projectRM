@@ -193,11 +193,7 @@ till you come to the end; then stop."
     }
     
     @objc private func nightSwitchAction() {
-        if nightShiftSwitch.isOn {
-            readingTextView.backgroundColor = .lightGray
-        } else {
-            readingTextView.backgroundColor = .white
-        }
+        readingTextView.backgroundColor = nightShiftSwitch.isOn ? .lightGray : .white
     }
     
     // MARK: - Private Methods

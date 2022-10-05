@@ -24,14 +24,7 @@ final class AlreadyExistPersonViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonSegmentedControlOutlet.addTarget(self, action: #selector(buttonSegmentedControlAction),
-                                               for: .valueChanged
-        )
-        buttonLabelOutlet.addTarget(self, action: #selector(buttonLabelAction), for: .touchUpInside)
-        buttonSwitchOutlet.addTarget(self, action: #selector(buttonSwitchAction), for: .touchUpInside)
-        buttonTextFieldOutlet.addTarget(self, action: #selector(buttonTextFieldAction), for: .touchUpInside)
-        buttonProgressOutlet.addTarget(self, action: #selector(buttonProgressAction), for: .touchUpInside)
-        sliderOutlet.addTarget(self, action: #selector(sliderAction), for: .valueChanged)
+        initMethods()
     }
     
     // MARK: - Private IBAction
@@ -93,5 +86,20 @@ final class AlreadyExistPersonViewController: UIViewController {
             break
         }
     }
-
+    
+    // MARK: Private Methods
+    private func initMethods() {
+        addTargetToOutlet()
+    }
+    
+    private func addTargetToOutlet() {
+        buttonSegmentedControlOutlet.addTarget(self, action: #selector(buttonSegmentedControlAction),
+                                               for: .valueChanged
+        )
+        buttonLabelOutlet.addTarget(self, action: #selector(buttonLabelAction), for: .touchUpInside)
+        buttonSwitchOutlet.addTarget(self, action: #selector(buttonSwitchAction), for: .touchUpInside)
+        buttonTextFieldOutlet.addTarget(self, action: #selector(buttonTextFieldAction), for: .touchUpInside)
+        buttonProgressOutlet.addTarget(self, action: #selector(buttonProgressAction), for: .touchUpInside)
+        sliderOutlet.addTarget(self, action: #selector(sliderAction), for: .valueChanged)
+    }
 }

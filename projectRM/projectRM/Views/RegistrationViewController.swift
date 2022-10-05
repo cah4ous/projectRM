@@ -24,20 +24,21 @@ final class RegistrationViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Private IBAction
     @IBAction func registerButton(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "isLoggedIn")
-        
-        let user = User(
-            name: nameTextField.text ?? "nil", email: emailTextField.text ?? "nil",
-            password: passwordTextField.text ?? "nil"
-        )
-        
-        let defaults = UserDefaults.standard
+        if nameTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false {
+            let user = User(
+                name: nameTextField.text ?? "nil", email: emailTextField.text ?? "nil",
+                password: passwordTextField.text ?? "nil"
+            )
+            
+            let defaults = UserDefaults.standard
 
-        let encoder = JSONEncoder()
-        if let encodedUser = try? encoder.encode(user) {
-            defaults.set(encodedUser, forKey: "user")
+            let encoder = JSONEncoder()
+            if let encodedUser = try? encoder.encode(user) {
+                defaults.set(encodedUser, forKey: "user")
+            }
+            
+            performSegue(withIdentifier: "signVC", sender: nil)
         }
-        
-        performSegue(withIdentifier: "signVC", sender: nil)
     }
     
     // MARK: - Private Methods

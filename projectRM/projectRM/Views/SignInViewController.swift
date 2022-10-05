@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// Экран, отвечающий за вход пользователя
+/// Экран авторизации
 final class SignInViewController: UIViewController {
     
     // MARK: - Private IBOutlet

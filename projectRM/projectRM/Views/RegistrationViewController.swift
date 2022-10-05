@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// Экран, который отвечает за регистрацию
+/// Экран регистрации
 final class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Private IBOutlet
@@ -22,7 +22,7 @@ final class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Private IBAction
-    @IBAction func registerButton(_ sender: Any) {
+    @IBAction func registerAction(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "isLoggedIn")
         if nameTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false {
             let user = User(

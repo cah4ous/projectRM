@@ -6,7 +6,7 @@
 //
 
 import Foundation
-/// Структура, которая позволяет хранить и пользоваться данными зарегистрированных пользователей
+/// Юзер
 struct User: Codable {
     let name: String
     let email: String

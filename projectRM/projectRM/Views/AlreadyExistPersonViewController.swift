@@ -6,20 +6,20 @@
 //
 
 import UIKit
-/// Экран, который хз че делает
+/// Экран антистресс
 final class AlreadyExistPersonViewController: UIViewController {
 
     // MARK: - Private IBOutlet
-    @IBOutlet private var buttonSegmentedControlOutlet: UISegmentedControl!
-    @IBOutlet private var sliderOutlet: UISlider!
-    @IBOutlet private var labelOutlet: UILabel!
-    @IBOutlet private var switchOutlet: UISwitch!
-    @IBOutlet private var textFieldOutlet: UITextField!
-    @IBOutlet private var progressOutlet: UIProgressView!
-    @IBOutlet private var buttonLabelOutlet: UIButton!
-    @IBOutlet private var buttonSwitchOutlet: UIButton!
-    @IBOutlet private var buttonTextFieldOutlet: UIButton!
-    @IBOutlet private var buttonProgressOutlet: UIButton!
+    @IBOutlet private var buttonSegmentedControl: UISegmentedControl!
+    @IBOutlet private var slider: UISlider!
+    @IBOutlet private var label: UILabel!
+    @IBOutlet private var newSwitch: UISwitch!
+    @IBOutlet private var textField: UITextField!
+    @IBOutlet private var progress: UIProgressView!
+    @IBOutlet private var buttonLabel: UIButton!
+    @IBOutlet private var buttonSwitch: UIButton!
+    @IBOutlet private var buttonTextField: UIButton!
+    @IBOutlet private var buttonProgress: UIButton!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -29,59 +29,43 @@ final class AlreadyExistPersonViewController: UIViewController {
     
     // MARK: - Private IBAction
     @objc private func sliderAction() {
-        buttonSegmentedControlOutlet.frame = CGRect(x: 20.0, y: 777.0, width: Double(sliderOutlet.value), height: 32.0)
+        buttonSegmentedControl.frame = CGRect(x: 20.0, y: 777.0, width: Double(slider.value), height: 32.0)
     }
     
     @objc private func buttonLabelAction() {
-        if labelOutlet.isHidden {
-            labelOutlet.isHidden = false
-        } else {
-            labelOutlet.isHidden = true
-        }
+        label.isHidden = !label.isHidden
     }
     
     @objc private func buttonSwitchAction() {
-        if switchOutlet.isHidden {
-            switchOutlet.isHidden = false
-        } else {
-            switchOutlet.isHidden = true
-        }
+        newSwitch.isHidden = !newSwitch.isHidden
     }
     
     @objc private func buttonTextFieldAction() {
-        if textFieldOutlet.isHidden {
-            textFieldOutlet.isHidden = false
-        } else {
-            textFieldOutlet.isHidden = true
-        }
+        textField.isHidden = !textField.isHidden
     }
     
     @objc private func buttonProgressAction() {
-        if progressOutlet.isHidden {
-            progressOutlet.isHidden = false
-        } else {
-            progressOutlet.isHidden = true
-        }
+        progress.isHidden = !progress.isHidden
     }
     
     @objc private func buttonSegmentedControlAction() {
-        switch buttonSegmentedControlOutlet.selectedSegmentIndex {
+        switch buttonSegmentedControl.selectedSegmentIndex {
         case 0:
-            buttonSwitchOutlet.isHidden = true
-            buttonProgressOutlet.isHidden = true
-            buttonTextFieldOutlet.isHidden = true
+            buttonSwitch.isHidden = true
+            buttonProgress.isHidden = true
+            buttonTextField.isHidden = true
         case 1:
-            buttonSwitchOutlet.isHidden = false
-            buttonProgressOutlet.isHidden = true
-            buttonTextFieldOutlet.isHidden = true
+            buttonSwitch.isHidden = false
+            buttonProgress.isHidden = true
+            buttonTextField.isHidden = true
         case 2:
-            buttonSwitchOutlet.isHidden = false
-            buttonProgressOutlet.isHidden = false
-            buttonTextFieldOutlet.isHidden = true
+            buttonSwitch.isHidden = false
+            buttonProgress.isHidden = false
+            buttonTextField.isHidden = true
         case 3:
-            buttonSwitchOutlet.isHidden = false
-            buttonProgressOutlet.isHidden = false
-            buttonTextFieldOutlet.isHidden = false
+            buttonSwitch.isHidden = false
+            buttonProgress.isHidden = false
+            buttonTextField.isHidden = false
         default:
             break
         }
@@ -89,17 +73,17 @@ final class AlreadyExistPersonViewController: UIViewController {
     
     // MARK: Private Methods
     private func initMethods() {
-        addTargetToOutlet()
+        addTargetToViews()
     }
     
-    private func addTargetToOutlet() {
-        buttonSegmentedControlOutlet.addTarget(self, action: #selector(buttonSegmentedControlAction),
+    private func addTargetToViews() {
+        buttonSegmentedControl.addTarget(self, action: #selector(buttonSegmentedControlAction),
                                                for: .valueChanged
         )
-        buttonLabelOutlet.addTarget(self, action: #selector(buttonLabelAction), for: .touchUpInside)
-        buttonSwitchOutlet.addTarget(self, action: #selector(buttonSwitchAction), for: .touchUpInside)
-        buttonTextFieldOutlet.addTarget(self, action: #selector(buttonTextFieldAction), for: .touchUpInside)
-        buttonProgressOutlet.addTarget(self, action: #selector(buttonProgressAction), for: .touchUpInside)
-        sliderOutlet.addTarget(self, action: #selector(sliderAction), for: .valueChanged)
+        buttonLabel.addTarget(self, action: #selector(buttonLabelAction), for: .touchUpInside)
+        buttonSwitch.addTarget(self, action: #selector(buttonSwitchAction), for: .touchUpInside)
+        buttonTextField.addTarget(self, action: #selector(buttonTextFieldAction), for: .touchUpInside)
+        buttonProgress.addTarget(self, action: #selector(buttonProgressAction), for: .touchUpInside)
+        slider.addTarget(self, action: #selector(sliderAction), for: .valueChanged)
     }
 }

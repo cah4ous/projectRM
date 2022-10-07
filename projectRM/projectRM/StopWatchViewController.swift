@@ -12,10 +12,14 @@ final class StopWatchViewController: UIViewController {
         static var isStart = false
         static var timer = Timer()
         static var seconds = 0
+        
+        static let start = "Start"
+        static let pause = "Pause"
+        static let format = "%02i:%02i:%02i"
     }
     
     // MARK: - Private IBOutlet
-    @IBOutlet private var startButtonOutlet: UIButton!
+    @IBOutlet private var startButton: UIButton!
     @IBOutlet private var timeLabel: UILabel!
     
     // MARK: - Lifecycle
@@ -27,12 +31,12 @@ final class StopWatchViewController: UIViewController {
     // MARK: - Private IBAction
     @IBAction private func startAndPauseButtonAction(_ sender: Any) {
         if Constants.isStart {
-            startButtonOutlet.setTitle("Start", for: .normal)
+            startButton.setTitle(Constants.start, for: .normal)
             Constants.isStart = false
             runTimer()
             
         } else {
-            startButtonOutlet.setTitle("Pause", for: .normal)
+            startButton.setTitle(Constants.pause, for: .normal)
             Constants.isStart = true
             Constants.timer.invalidate()
         }
@@ -42,16 +46,16 @@ final class StopWatchViewController: UIViewController {
         Constants.isStart = true
         Constants.timer.invalidate()
         Constants.seconds = 0
-        startButtonOutlet.setTitle("Start", for: .normal)
+        startButton.setTitle(Constants.start, for: .normal)
         
     }
     
+    // MARK: - Private Methods
     @objc private func updateTimer() {
          Constants.seconds += 1
          timeLabel.text = timeString(time: TimeInterval(Constants.seconds))
     }
     
-    // MARK: - Private Methods
     private func runTimer() {
         Constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                        selector: #selector(updateTimer),
@@ -63,7 +67,7 @@ final class StopWatchViewController: UIViewController {
          let hours = Int(time) / 3600
          let minutes = Int(time) / 60 % 60
          let seconds = Int(time) % 60
-         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+        return String(format: Constants.format, hours, minutes, seconds)
      }
     
 }

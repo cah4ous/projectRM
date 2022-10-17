@@ -6,16 +6,13 @@
 //
 
 import UIKit
-/// Экран, который отвечает за ...
+
+/// Экран, который отвечает за Storyboard
 final class ViewController: UIViewController {
-    
-    // MARK: - Private Visual Components
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
     }
-    // MARK: - Private IBAction
-    
 }

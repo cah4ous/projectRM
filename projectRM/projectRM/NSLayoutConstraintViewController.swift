@@ -10,7 +10,7 @@ import UIKit
 /// Экран со светофором, настроенным через NSLayoutConstraint
  final class NSLayoutConstraintViewController: UIViewController {
 
-     // MARK: - Private property
+     // MARK: - Private visual components
      private let blackView: UIView = {
          let view = UIView()
          view.translatesAutoresizingMaskIntoConstraints = false
@@ -54,6 +54,7 @@ import UIKit
          settingsView()
          setAllConstraints()
      }
+     
      private func settingsView() {
          view.addSubview(blackView)
          view.addSubview(yellowView)

@@ -10,7 +10,7 @@ import UIKit
 /// Экран светофора, настроенного через Stack View
  final class StackViewController: UIViewController {
 
-     // MARK: - Private property
+     // MARK: - Private visual components
      private let redView: UIView = {
          let view = UIView()
          view.translatesAutoresizingMaskIntoConstraints = false
@@ -58,18 +58,16 @@ import UIKit
      private func initMethods() {
          settingsView()
          setConstraintsToStackView()
-         
      }
      
      private func settingsView() {
          view.addSubview(colorStackView)
-         
          view.backgroundColor = .white
      }
      
      private func setConstraintsToStackView() {
          colorStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7).isActive = true
-         colorStackView.widthAnchor.constraint(equalTo: colorStackView.heightAnchor, multiplier: 1/3).isActive = true
+         colorStackView.widthAnchor.constraint(equalTo: colorStackView.heightAnchor, multiplier: 1 / 3).isActive = true
          colorStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
          colorStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
      }

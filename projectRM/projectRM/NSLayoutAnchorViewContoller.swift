@@ -10,7 +10,7 @@ import UIKit
 /// Экран свертофора, настроенного через NSLayoutAnchor
  final class NSLayoutAnchorViewController: UIViewController {
 
-     // MARK: - Private property
+     // MARK: - Private visual components
      private let blackView: UIView = {
          let view = UIView()
          view.translatesAutoresizingMaskIntoConstraints = false

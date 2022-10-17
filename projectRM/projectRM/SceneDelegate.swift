@@ -6,7 +6,8 @@
 //
 
 import UIKit
-/// FirstVC
+
+/// Scene Delegate
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -18,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
                 
-                window.rootViewController = ViewController()
+                window.rootViewController = NSLayoutConstraintViewController()
                 self.window = window
                 window.makeKeyAndVisible()
               }

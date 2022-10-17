@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 /// Экран, который отвечает за ...
 final class ViewController: UIViewController {
     
@@ -14,7 +15,7 @@ final class ViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
     }
     // MARK: - Private IBAction
     
